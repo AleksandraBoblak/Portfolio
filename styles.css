@@ -37,6 +37,28 @@ a {
   text-decoration: none;
 }
 
+/* Inline text links — calm, readable, minimal */
+a.link,
+.link {
+  color: rgba(0, 0, 0, 0.72);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.22);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a.link:hover,
+.link:hover {
+  color: rgba(0, 0, 0, 0.88);
+  text-decoration-color: rgba(0, 0, 0, 0.42);
+}
+
+a.link:focus-visible,
+.link:focus-visible {
+  outline: 1px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 2px;
+}
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -526,6 +548,7 @@ main {
 }
 
 .experiment-table thead th {
+  vertical-align: top;
   text-align: left;
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -563,6 +586,26 @@ main {
   color: rgba(0, 0, 0, 0.62);
   font-weight: 500;
   background: rgba(255, 255, 255, 0.66);
+}
+
+.experiment-note {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.55);
+  font-style: italic;
+}
+
+/* Inline code — readable monospace, barely-there fill */
+.code-inline {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.045);
+  padding: 0.04em 0.22em;
+  border-radius: 4px;
+  letter-spacing: -0.02em;
 }
 
 .experiment-table tbody td:nth-child(2) {
