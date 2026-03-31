@@ -785,6 +785,74 @@ a.card--link:focus-visible {
   letter-spacing: 0.03em;
 }
 
+/* Karnaluks case study — intro fills first viewport; What I designed on the next */
+.case-study-page--karnaluks .case-study-intro-panel {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(8px, 3vh, 32px);
+  box-sizing: border-box;
+}
+
+.case-study-page--karnaluks .case-study-intro-panel > .section {
+  flex-shrink: 0;
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-hero {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-hero .section__inner {
+  padding-top: calc(var(--header-h) + clamp(32px, 6vh, 72px));
+  padding-bottom: clamp(12px, 3vh, 36px);
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-hero .about-title {
+  margin-bottom: clamp(20px, 3.5vh, 36px);
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-hero .case-study-lede {
+  line-height: 1.62;
+  max-width: 42rem;
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-goal {
+  padding-top: clamp(20px, 4vh, 48px);
+  padding-bottom: clamp(28px, 5vh, 64px);
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-goal .section__inner {
+  padding-top: 0;
+}
+
+.case-study-page--karnaluks .case-study-intro-panel .case-study-goal .section__body-copy:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-page--karnaluks .case-study-designed {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: clamp(20px, 4vh, 56px);
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.case-study-page--karnaluks .case-study-designed .case-study-more {
+  margin-top: 2.75rem;
+}
+
+.case-study-page--karnaluks .case-study-designed > .section__inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .case-study-research-cols {
   margin-top: 1.75rem;
 }
@@ -816,17 +884,74 @@ a.card--link:focus-visible {
 }
 
 .case-study-compare {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
   margin-top: 1.25rem;
+}
+
+.case-study-compare__hero-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(18px, 3.5vw, 36px);
+}
+
+.case-study-compare__proto {
+  margin: 0;
+  flex: 0 1 auto;
+  max-width: 14rem;
+  padding-top: 5px;
+}
+
+.case-study-compare__proto-link {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.88);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(0, 0, 0, 0.45);
+  text-underline-offset: 4px;
+}
+
+.case-study-compare__proto-link:hover {
+  color: #000;
+  text-decoration-color: rgba(0, 0, 0, 0.65);
+}
+
+.case-study-compare__viewport-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: min(100%, 300px);
+}
+
+.case-study-compare__viewport {
+  position: relative;
+  width: 90%;
+  max-width: 90%;
+  padding-top: 44px;
 }
 
 .case-study-compare__toggle {
   display: inline-flex;
   align-items: stretch;
-  margin-bottom: 14px;
   padding: 3px;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.06);
   gap: 2px;
+}
+
+.case-study-compare__toggle--dock {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .case-study-compare__btn {
@@ -922,11 +1047,37 @@ a.card--link:focus-visible {
   outline-offset: 4px;
 }
 
-.case-study-compare__viewport {
-  position: relative;
+/* Match redesign mock-up aspect; before image is cropped (cover) into same frame */
+.case-study-compare__frame {
+  width: 100%;
+  aspect-ratio: 1778 / 1628;
+  overflow: hidden;
+  border-radius: 6px;
+  background: transparent;
+}
+
+.case-study-compare__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: top center;
+}
+
+/* Zoom past in-image whitespace; frame overflow clips sides/bottom */
+.case-study-compare__img--after {
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.12);
+}
+
+.case-study-compare__img--before {
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.38);
 }
 
 .case-study-compare__pane {
+  position: relative;
   margin: 0;
 }
 
@@ -935,19 +1086,32 @@ a.card--link:focus-visible {
 }
 
 .case-study-compare__caption {
-  margin: 10px 0 0;
-  font-size: 13px;
-  line-height: 1.45;
-  color: rgba(0, 0, 0, 0.55);
+  margin: 12px 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.68);
 }
 
-.case-study-compare__media--before.card__media--placeholder {
-  background-image: linear-gradient(
-    135deg,
-    #c8d0dc 0%,
-    #e0e4ea 45%,
-    #ebe6e2 100%
-  );
+@media (max-width: 720px) {
+  .case-study-compare__hero-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .case-study-compare__proto {
+    max-width: none;
+    padding-top: 0;
+    margin-bottom: 6px;
+  }
+
+  .case-study-compare__viewport-shell {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 .case-study-more {
@@ -959,11 +1123,11 @@ a.card--link:focus-visible {
 .case-study-more__summary {
   cursor: pointer;
   list-style: none;
-  font-size: 11px;
+  font-size: clamp(12px, 1.05vw, 13px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.52);
+  font-weight: inherit;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .case-study-more__summary::-webkit-details-marker {
@@ -1023,6 +1187,14 @@ a.card--link:focus-visible {
   border-top: 0;
 }
 
+.case-study-page--karnaluks .about-main > section:has(.case-study-key-idea) {
+  padding-top: 12px;
+}
+
+.case-study-page--karnaluks .case-study-key-idea {
+  margin-top: 0.65rem;
+}
+
 .case-study-key-idea .section__eyebrow {
   margin-bottom: 16px;
 }
@@ -1080,6 +1252,14 @@ a.card--link:focus-visible {
   .about-main .section {
     padding-top: 28px;
     padding-bottom: 28px;
+  }
+
+  .case-study-page--karnaluks .case-study-intro-panel .case-study-hero .section__inner {
+    padding-top: calc(var(--header-h) + 24px);
+  }
+
+  .case-study-page--karnaluks .case-study-designed {
+    padding-top: 24px;
   }
 
   .about-page:not(.case-study-page) .about-main .section {

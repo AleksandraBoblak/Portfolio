@@ -6,7 +6,7 @@
     <title>Karnaluks redesign — Aleksandra Boblak</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="about-page case-study-page">
+  <body class="about-page case-study-page case-study-page--karnaluks">
     <div class="page">
       <header class="site-header">
         <div class="site-header__inner">
@@ -32,87 +32,119 @@
       </header>
 
       <main class="about-main">
-        <section class="section case-study-hero">
-          <div class="section__inner">
-            <h1 class="about-title">Karnaluks redesign</h1>
-            <p class="case-study-lede">
-              Reimagining a craft supply shop to feel more like an inspiring studio
-              — shifting from a product catalog into a place that supports inspiration,
-              creativity, and reflection.
-            </p>
-            <p class="case-study-meta">
-              5 weeks (Feb–Mar 2026) · Figma · Lovable
-            </p>
-          </div>
-        </section>
+        <div class="case-study-intro-panel">
+          <section class="section case-study-hero">
+            <div class="section__inner">
+              <h1 class="about-title">Karnaluks redesign</h1>
+              <p class="case-study-lede">
+                Reimagining a craft supply shop to feel more like an inspiring studio
+                — shifting from a product catalog into a place that supports inspiration,
+                creativity, and reflection.
+              </p>
+              <p class="case-study-meta">
+                5 weeks (Feb–Mar 2026) · Figma · Lovable
+              </p>
+            </div>
+          </section>
 
-        <section class="section">
-          <div class="section__inner">
-            <p class="section__eyebrow">CONTEXT</p>
-            <p class="section__body-copy">
-              Emotional Design course. Karnaluks is a craft supply store with a wide
-              range of hobbies; the physical shop is loved, but the site felt purely
-              transactional and overwhelming.
-            </p>
-            <p class="section__body-copy">
-              The goal: rethink the website through emotional design — from catalog
-              to a place that supports inspiration, creativity, and reflection.
-            </p>
-          </div>
-        </section>
+          <section class="section case-study-context">
+            <div class="section__inner">
+              <p class="section__eyebrow">CONTEXT</p>
+              <p class="section__body-copy">
+                Karnaluks is a craft supply store with a wide
+                range of hobbies; the physical shop is loved, but the website felt purely
+                transactional and overwhelming.
+              </p>
+            </div>
+          </section>
 
-        <section class="section">
+          <section class="section case-study-goal">
+            <div class="section__inner">
+              <p class="section__eyebrow">GOAL</p>
+              <p class="section__body-copy">
+                Rethink the website through emotional design — from catalog to a place
+                that supports inspiration, creativity, and reflection.
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <section class="section case-study-designed">
           <div class="section__inner">
             <p class="section__eyebrow">WHAT I DESIGNED</p>
 
             <div class="case-study-compare" data-case-study-compare>
-              <div
-                class="case-study-compare__toggle"
-                role="group"
-                aria-label="Which version to show"
-              >
-                <button
-                  type="button"
-                  class="case-study-compare__btn"
-                  data-compare-view="before"
-                  aria-pressed="false"
-                >
-                  Before
-                </button>
-                <button
-                  type="button"
-                  class="case-study-compare__btn case-study-compare__btn--active"
-                  data-compare-view="after"
-                  aria-pressed="true"
-                >
-                  After
-                </button>
-              </div>
               <p
                 class="case-study-compare__status visually-hidden"
                 aria-live="polite"
               ></p>
-              <div class="case-study-compare__viewport">
-                <figure class="case-study-compare__pane" data-compare="before" hidden>
+              <div class="case-study-compare__hero-row">
+                <p class="case-study-compare__proto">
+                  <a
+                    class="link case-study-compare__proto-link"
+                    href="https://www.figma.com/proto/HjxsrPTLUhcUW61LWoVQ0U/Karnaluks-Re-design?node-id=634-68933&amp;t=kmTNU57qaCrofL6T-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=469%3A7068&amp;starting-point-node-id=634%3A68933&amp;show-proto-sidebar=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >View the prototype →</a>
+                </p>
+                <div class="case-study-compare__viewport-shell">
+                <div class="case-study-compare__viewport">
                   <div
-                    class="card__media card__media--placeholder case-study-compare__media case-study-compare__media--before"
-                    role="img"
-                    aria-label="Original Karnaluks website — replace with screenshot"
-                  ></div>
-                  <figcaption class="case-study-compare__caption">
-                    Original site — dense category grid
-                  </figcaption>
-                </figure>
-                <figure class="case-study-compare__pane" data-compare="after">
-                  <div
-                    class="card__media card__media--placeholder case-study-compare__media"
-                    role="img"
-                    aria-label="Redesigned site — replace with mock-up"
-                  ></div>
-                  <figcaption class="case-study-compare__caption">
-                    Redesign — inspiration-led experience
-                  </figcaption>
-                </figure>
+                    class="case-study-compare__toggle case-study-compare__toggle--dock"
+                    role="group"
+                    aria-label="Which version to show"
+                  >
+                    <button
+                      type="button"
+                      class="case-study-compare__btn"
+                      data-compare-view="before"
+                      aria-pressed="false"
+                    >
+                      Before
+                    </button>
+                    <button
+                      type="button"
+                      class="case-study-compare__btn case-study-compare__btn--active"
+                      data-compare-view="after"
+                      aria-pressed="true"
+                    >
+                      After
+                    </button>
+                  </div>
+                  <figure class="case-study-compare__pane" data-compare="before" hidden>
+                    <div class="case-study-compare__frame">
+                      <img
+                        class="case-study-compare__img case-study-compare__img--before"
+                        src="assets/kl_home.webp"
+                        alt="Original Karnaluks homepage — dense category grid"
+                        width="3840"
+                        height="4277"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <figcaption class="case-study-compare__caption">
+                      Original site — dense category grid
+                    </figcaption>
+                  </figure>
+                  <figure class="case-study-compare__pane" data-compare="after">
+                    <div class="case-study-compare__frame">
+                      <img
+                        class="case-study-compare__img case-study-compare__img--after"
+                        src="assets/kl_home_redesign.webp"
+                        alt="Redesigned Karnaluks homepage — inspiration-led layout"
+                        width="1778"
+                        height="1628"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <figcaption class="case-study-compare__caption">
+                      Redesign — inspiration-led experience
+                    </figcaption>
+                  </figure>
+                </div>
+                </div>
               </div>
             </div>
 
