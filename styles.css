@@ -364,6 +364,16 @@ a.card--link:focus-visible {
   padding-top: 12px;
 }
 
+.section--about .about-stack {
+  gap: 5rem;
+}
+
+@media (min-width: 700px) {
+  .section--about .about-content {
+    max-width: min(50%, 36rem);
+  }
+}
+
 .section__body-copy {
   margin: 12px 0 22px;
   font-size: 14px;
@@ -530,16 +540,33 @@ a.card--link:focus-visible {
   }
 }
 
-/* About page */
-.about-page {
+/* About page — full-viewport sections + snap (About.html only, not case studies) */
+.about-page.case-study-page {
   scroll-snap-type: none;
   scroll-padding-top: 0;
+}
+
+.about-page:not(.case-study-page) {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--header-h);
 }
 
 .about-main .section {
   min-height: auto;
   padding-top: 42px;
   padding-bottom: 42px;
+}
+
+.about-page:not(.case-study-page) .about-main .section {
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: var(--header-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .about-main .section__inner {
@@ -550,6 +577,45 @@ a.card--link:focus-visible {
 .about-main .about-hero .section__inner {
   border-top: 0;
   padding-top: calc(var(--header-h) + 36px);
+}
+
+.about-page:not(.case-study-page) .about-values {
+  position: relative;
+  background-color: var(--page-bg);
+  overflow: hidden;
+}
+
+.about-page:not(.case-study-page) .about-values::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--page-bg) 0%,
+      rgba(244, 242, 240, 0) 14%,
+      rgba(244, 242, 240, 0) 86%,
+      var(--page-bg) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(244, 242, 240, 0.52) 100%
+    ),
+    radial-gradient(ellipse 85% 60% at 22% 26%, rgba(248, 208, 210, 0.3), transparent),
+    radial-gradient(ellipse 75% 55% at 78% 16%, rgba(212, 224, 246, 0.22), transparent),
+    url("assets/hero-sky.webp");
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, cover;
+  background-position: 0 0, 0 0, 0 0, 0 0, center top;
+  background-repeat: no-repeat;
+}
+
+.about-page:not(.case-study-page) .about-values .section__inner {
+  position: relative;
+  z-index: 1;
+  border-top: 0;
 }
 
 .about-title {
@@ -910,6 +976,12 @@ a.card--link:focus-visible {
   .about-main .section {
     padding-top: 28px;
     padding-bottom: 28px;
+  }
+
+  .about-page:not(.case-study-page) .about-main .section {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 100vh;
   }
 
   .about-title {
