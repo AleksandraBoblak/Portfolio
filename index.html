@@ -54,7 +54,7 @@
                   Small experiments with materials, spaces, and experiences.
                 </p>
               </div>
-              <a href="experiments.html" class="section__view-all">View all →</a>
+              <a href="experiments.html" class="section__view-all">All experiments →</a>
             </div>
 
             <div class="cards">
@@ -75,6 +75,7 @@
                   />
                 </div>
                 <div class="card__body">
+                  <span class="card__index" aria-hidden="true">01</span>
                   <h3 class="card__title">Karnaluks redesign</h3>
                   <p class="card__description">
                     From product catalog to a studio that supports inspiration and
@@ -100,35 +101,38 @@
                   />
                 </div>
                 <div class="card__body">
+                  <span class="card__index" aria-hidden="true">02</span>
                   <h3 class="card__title">Renovation tracker</h3>
                   <p class="card__description">
-                    An experiment in simplifying long-term renovation.
+                    Making a long and fragmented renovation process easier to return to
+                    — helping homeowners keep track of where they left off and what to do
+                    next.
                   </p>
                 </div>
               </a>
 
-              <article class="card" hidden aria-hidden="true">
-                <div class="card__media card__media--placeholder"></div>
-                <div class="card__body">
-                  <h3 class="card__title">Striped Illusion Dress</h3>
-                  <p class="card__description">
-                    An optical-illusion experiment using just stripes and movement.
-                  </p>
-                </div>
-              </article>
-
               <a
                 href="tactile-sudoku.html"
                 class="card card--link"
-                aria-label="Tactile Sudoku — open layout preview"
+                aria-label="Tactile Sudoku — open project"
               >
                 <div class="card__media card__media--cover">
-                  <div class="editorial-grid-teaser" aria-hidden="true"></div>
+                  <img
+                    class="card__media-img media-sudoku-hands"
+                    src="assets/sudokuHands.webp"
+                    alt="Hands interacting with a tactile Sudoku board"
+                    width="2048"
+                    height="3641"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div class="card__body">
+                  <span class="card__index" aria-hidden="true">03</span>
                   <h3 class="card__title">Tactile Sudoku</h3>
                   <p class="card__description">
-                    A tactile take on number puzzles — layout in progress.
+                    Exploring how touch, contrast, and clear structure can make puzzles
+                    easier to navigate — especially when vision isn’t the primary sense.
                   </p>
                 </div>
               </a>
@@ -137,17 +141,30 @@
         </section>
 
         <section class="section section--about snap-section">
-          <div class="section__inner">
+          <div class="section__inner section__inner--about">
             <div class="about-stack">
-              <div class="about-content">
-                <p class="section__eyebrow">A LITTLE ABOUT ME</p>
-                <p class="section__body-copy">
-                  Hi! I'm Aleksandra. I'm a designer in the making who cares deeply
-                  about the quiet details of human experience. I think the best
-                  ideas come from listening closely, having empathy, and just
-                  allowing ourselves to play and make mistakes.
-                </p>
-                <a href="about.html" class="button-link">More about me →</a>
+              <div class="about-bg-anchor">
+                <span class="about-bg-word" aria-hidden="true">About</span>
+                <div class="about-content">
+                  <p class="section__eyebrow">A LITTLE ABOUT ME</p>
+                  <div class="about-paragraphs">
+                    <p class="section__body-copy">
+                      Hi! I’m Aleksandra — a designer in the making who cares about the
+                      quiet details of how people experience things.
+                    </p>
+                    <p class="section__body-copy">
+                      I believe the best ideas come from listening closely and meeting
+                      people with empathy.
+                    </p>
+                    <p class="section__body-copy">
+                      I also think we learn as much from play and mistakes as from polish.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="about-cta">
+                <a href="about.html" class="link">About me →</a>
               </div>
 
               <div class="about-connect">
@@ -185,7 +202,7 @@
                       />
                     </svg>
                   </a>
-                  <a href="#" class="footer-link">LinkedIn →</a>
+                  <a href="#" class="footer-link">LinkedIn ↗</a>
                 </div>
               </div>
             </div>
