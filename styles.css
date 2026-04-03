@@ -373,10 +373,15 @@ a.card--link:focus-visible {
   object-position: top center;
 }
 
-/* kl_home_redesign.jpeg — crop thin left-edge artifact (home + experiments cards) */
+/* kl_home_redesign.jpeg — crop thin left-edge artifact (home + legacy experiments media) */
 .card__media--cover .card__media-img.media-kl-home-redesign,
 .experiments-item__media img.media-kl-home-redesign {
   object-position: 1.4% top center;
+}
+
+/* Experiments mag: keep horizontal nudge, bias vertical toward lower frame */
+.experiments-mag__crop img.media-kl-home-redesign {
+  object-position: 1.4% 52%;
 }
 
 .card__body {
@@ -504,26 +509,36 @@ a.card--link:focus-visible {
   margin-bottom: clamp(16px, 2vh, 22px);
 }
 
-/* Experiments page — jump nav */
+/* Experiments — jump nav (inside spread: flat, editorial strip) */
 .experiments-subnav {
   position: sticky;
   top: var(--header-h);
   z-index: 5;
-  margin: 0;
-  padding: 0;
+  margin: 0 calc(-1 * var(--experiments-spread-pad-x, 24px));
+  padding: 10px var(--experiments-spread-pad-x, 24px) 14px;
+  border-bottom: 1px solid var(--editorial-rule);
   background: linear-gradient(
     to bottom,
-    rgba(244, 242, 240, 0.97) 0%,
-    rgba(244, 242, 240, 0.92) 70%,
-    rgba(244, 242, 240, 0)
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(255, 255, 255, 0.93) 65%,
+    rgba(255, 255, 255, 0.82) 100%
   );
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .experiments-subnav__inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 16px 24px 20px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.experiments-subnav__label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--editorial-eyebrow);
 }
 
 .experiments-subnav__list {
@@ -532,39 +547,51 @@ a.card--link:focus-visible {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-  gap: 8px 10px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0 2px;
+}
+
+.experiments-subnav__list li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.experiments-subnav__list li:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 12px;
+  margin: 0 12px 0 14px;
+  background: var(--editorial-rule);
 }
 
 .experiments-subnav__link {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: var(--editorial-sheet-bg);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  align-items: baseline;
+  gap: 7px;
+  padding: 5px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.72);
+  color: rgba(0, 0, 0, 0.68);
   text-decoration: none;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    color 0.15s ease;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
 }
 
 .experiments-subnav__link:hover {
-  border-color: rgba(143, 122, 94, 0.35);
   color: rgba(0, 0, 0, 0.88);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 122, 94, 0.45);
 }
 
 .experiments-subnav__link:focus-visible {
   outline: 2px solid rgba(0, 0, 0, 0.35);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .experiments-subnav__num {
@@ -779,16 +806,62 @@ a.card--link:focus-visible {
   border-top: 0;
 }
 
-.about-page.experiments-page .experiments-hero .section__inner {
-  border-top: 0;
+/* One continuous “index” column (distinct from stacked case-study sheets) */
+.about-page.experiments-page .experiments-editorial-mag {
+  padding-left: clamp(16px, 4vw, 24px);
+  padding-right: clamp(16px, 4vw, 24px);
+  padding-bottom: clamp(36px, 5vh, 56px);
+}
+
+.about-page.experiments-page .experiments-spread {
+  --experiments-spread-pad-x: clamp(20px, 3vw, 32px);
+  max-width: min(1040px, 100%);
+  margin-left: auto;
+  margin-right: auto;
   margin-top: calc(var(--header-h) + 12px);
-  padding-top: clamp(16px, 2.2vh, 24px);
-  padding-bottom: clamp(20px, 3vh, 28px);
+  padding: clamp(22px, 3vw, 32px) var(--experiments-spread-pad-x)
+    clamp(18px, 2.5vw, 28px);
   background: var(--editorial-sheet-bg);
   border-radius: 2px;
   box-shadow: var(--editorial-sheet-shadow);
-  padding-left: clamp(22px, 3vw, 36px);
-  padding-right: clamp(22px, 3vw, 36px);
+  overflow: visible;
+}
+
+.about-page.experiments-page .experiments-spread .section {
+  background: transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.about-page.experiments-page .experiments-spread .experiments-hero .section__inner {
+  border-top: 0;
+  margin-top: 0;
+  padding: 0 0 clamp(14px, 2vh, 20px) 0;
+  max-width: none;
+  margin-inline: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.about-page.experiments-page .experiments-spread .experiments-hero .editorial-rule {
+  display: none;
+}
+
+.about-page.experiments-page .experiments-spread .experiments-item .section__inner {
+  padding: 0;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.about-page.experiments-page .experiments-spread .experiments-item + .experiments-item .experiments-item__sheet {
+  border-top: 1px solid var(--editorial-rule);
+}
+
+.about-page.experiments-page .experiments-spread .experiments-item__sheet {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .about-page.experiments-page .experiments-hero__eyebrow {
@@ -815,21 +888,13 @@ a.card--link:focus-visible {
   padding: clamp(14px, 2.2vw, 20px) clamp(14px, 2vw, 20px) clamp(16px, 2.2vw, 22px);
 }
 
-.experiments-item__folio {
-  margin-top: 1.1rem;
-  padding-top: 0.85rem;
-}
-
-.experiments-item__folio .editorial-folio__num {
-  font-variant-numeric: tabular-nums;
-}
-
 .experiments-page .experiment-tag {
   border-color: rgba(143, 122, 94, 0.22);
 }
 
 .experiments-page .experiments-item {
   scroll-margin-top: calc(var(--header-h) + 64px);
+  overflow: visible;
 }
 
 .experiments-item__inner {
@@ -968,6 +1033,131 @@ a.card--link:focus-visible {
 
 .experiments-item__case-meta.case-study-meta {
   margin: 6px 0 16px;
+}
+
+/* Experiments — editorial row: compact visual + copy, index top-left */
+.about-page.experiments-page .experiments-editorial-mag .experiments-item__inner {
+  max-width: min(1040px, 100%);
+  overflow: visible;
+}
+
+.experiments-item__sheet.experiments-mag {
+  position: relative;
+  overflow: visible;
+  /* Left: inner margin inside the white card so half the index (translateX -50%) sits on white, not on the image */
+  padding-top: clamp(18px, 2.5vw, 28px);
+  padding-right: clamp(16px, 2.4vw, 28px);
+  padding-bottom: clamp(22px, 3vw, 34px);
+  padding-left: clamp(52px, 8.5vw, 92px);
+}
+
+.experiments-mag__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
+  gap: clamp(20px, 3.5vw, 44px);
+  align-items: start;
+}
+
+.experiments-mag__visual {
+  min-width: 0;
+}
+
+.experiments-mag__frame {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.experiments-mag__frame--link {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experiments-mag__frame--link:hover .experiments-mag__crop {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.experiments-mag__frame--link:hover {
+  transform: translateY(-2px);
+}
+
+.experiments-mag__frame--link:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 4px;
+}
+
+.experiments-mag__crop {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  transition: box-shadow 0.22s ease;
+}
+
+.experiments-mag__crop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Slightly below center so taller crops reveal more of the lower image */
+  object-position: 50% 48%;
+}
+
+.experiments-mag__crop--landscape-compact {
+  aspect-ratio: 4 / 3;
+  max-height: min(52vh, 420px);
+  max-width: min(100%, 640px);
+}
+
+.experiments-mag__crop--placeholder {
+  min-height: min(44vh, 360px);
+  background-image: linear-gradient(
+    135deg,
+    #d9e4f5 0%,
+    #f5d9e2 50%,
+    #f7f2e7 100%
+  );
+}
+
+/* Straddle outer edge of experiments spread (half in page gutter, half on white) */
+.experiments-mag__index {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  transform: none;
+  font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.78;
+  color: var(--editorial-accent);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.95),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 720px) {
+  .experiments-mag__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experiments-item__sheet.experiments-mag {
+    padding-left: clamp(40px, 11vw, 64px);
+  }
+
+  .experiments-mag__frame {
+    width: 100%;
+  }
+
+  .experiments-mag__crop--landscape-compact {
+    max-width: 100%;
+  }
 }
 
 .about-page:not(.case-study-page):not(.experiments-page) {
@@ -2135,6 +2325,11 @@ a.card--link:focus-visible {
   .about-page.experiments-page .about-main .section {
     padding-top: 32px;
     padding-bottom: 32px;
+  }
+
+  .about-page.experiments-page .experiments-spread .section {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .about-title {

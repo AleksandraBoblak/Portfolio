@@ -31,45 +31,52 @@
         </div>
       </header>
 
-      <main class="about-main">
-        <section class="section experiments-hero">
-          <div class="section__inner">
-            <p class="section__eyebrow experiments-hero__eyebrow">Index</p>
-            <h1 class="about-title experiments-hero__title">Experiments</h1>
-            <p class="experiments-intro">
-              Small projects with materials, spaces, and interfaces — each one a
-              chance to learn something I could not get from slides alone.
-            </p>
-            <div class="editorial-rule" aria-hidden="true"></div>
-          </div>
-        </section>
+      <main class="about-main experiments-editorial-mag">
+        <div class="experiments-spread">
+          <section class="section experiments-hero">
+            <div class="section__inner">
+              <p class="section__eyebrow experiments-hero__eyebrow">Index</p>
+              <h1 class="about-title experiments-hero__title">Experiments</h1>
+              <p class="experiments-intro">
+                Small projects with materials, spaces, and interfaces — each one a
+                chance to learn something I could not get from slides alone.
+              </p>
+              <div class="editorial-rule" aria-hidden="true"></div>
+            </div>
+          </section>
 
-        <nav class="experiments-subnav" aria-label="Jump to experiments">
-          <div class="experiments-subnav__inner">
-            <ul class="experiments-subnav__list">
-              <li>
-                <a class="experiments-subnav__link" href="#exp-karnaluks"
-                  ><span class="experiments-subnav__num">01</span> Karnaluks redesign</a
-                >
-              </li>
-              <li>
-                <a class="experiments-subnav__link" href="#exp-reno"
-                  ><span class="experiments-subnav__num">02</span> Renovation tracker</a
-                >
-              </li>
-              <li>
-                <a class="experiments-subnav__link" href="#exp-dress"
-                  ><span class="experiments-subnav__num">03</span> Striped Illusion Dress</a
-                >
-              </li>
-              <li>
-                <a class="experiments-subnav__link" href="#exp-tactile-sudoku"
-                  ><span class="experiments-subnav__num">04</span> Tactile Sudoku</a
-                >
-              </li>
-            </ul>
-          </div>
-        </nav>
+          <nav
+            class="experiments-subnav"
+            aria-labelledby="experiments-subnav-label"
+          >
+            <div class="experiments-subnav__inner">
+              <p class="experiments-subnav__label" id="experiments-subnav-label">
+                Jump to
+              </p>
+              <ul class="experiments-subnav__list">
+                <li>
+                  <a class="experiments-subnav__link" href="#exp-karnaluks"
+                    ><span class="experiments-subnav__num">01</span> Karnaluks redesign</a
+                  >
+                </li>
+                <li>
+                  <a class="experiments-subnav__link" href="#exp-reno"
+                    ><span class="experiments-subnav__num">02</span> Renovation tracker</a
+                  >
+                </li>
+                <li hidden aria-hidden="true">
+                  <a class="experiments-subnav__link" href="#exp-dress" tabindex="-1"
+                    ><span class="experiments-subnav__num">03</span> Striped Illusion Dress</a
+                  >
+                </li>
+                <li>
+                  <a class="experiments-subnav__link" href="#exp-tactile-sudoku"
+                    ><span class="experiments-subnav__num">03</span> Tactile Sudoku</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
 
         <section
           class="section experiments-item"
@@ -77,23 +84,29 @@
           aria-labelledby="exp-karnaluks-title"
         >
           <div class="section__inner experiments-item__inner">
-            <div class="experiments-item__sheet">
-              <a
-                href="craft-store-redesign.html"
-                class="experiments-item__media experiments-item__media--link"
-                aria-label="Karnaluks redesign — open case study"
-              >
-                <img
-                  class="media-kl-home-redesign"
-                  src="assets/kl_home_redesign.jpeg"
-                  alt=""
-                  width="1778"
-                  height="1628"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-              <div class="experiments-item__content">
+            <div class="experiments-item__sheet experiments-mag">
+              <span class="experiments-mag__index" aria-hidden="true">01</span>
+              <div class="experiments-mag__grid">
+                <div class="experiments-mag__visual">
+                  <a
+                    href="craft-store-redesign.html"
+                    class="experiments-mag__frame experiments-mag__frame--link"
+                    aria-label="Karnaluks redesign — open case study"
+                  >
+                    <div class="experiments-mag__crop experiments-mag__crop--landscape-compact">
+                      <img
+                        class="media-kl-home-redesign"
+                        src="assets/kl_home_redesign.jpeg"
+                        alt=""
+                        width="1778"
+                        height="1628"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div class="experiments-item__content experiments-mag__copy">
                 <h2 class="experiments-item__title" id="exp-karnaluks-title">
                   <a
                     href="craft-store-redesign.html"
@@ -113,11 +126,8 @@
                 <p class="experiments-item__action">
                   <a class="link" href="craft-store-redesign.html">View case study →</a>
                 </p>
+                </div>
               </div>
-              <footer class="editorial-folio experiments-item__folio">
-                <span>Karnaluks redesign</span>
-                <span class="editorial-folio__num">01</span>
-              </footer>
             </div>
           </div>
         </section>
@@ -128,22 +138,28 @@
           aria-labelledby="exp-reno-title"
         >
           <div class="section__inner experiments-item__inner">
-            <div class="experiments-item__sheet">
-              <a
-                href="renovation-tracker.html"
-                class="experiments-item__media experiments-item__media--link"
-                aria-label="Renovation tracker — open case study"
-              >
-                <img
-                  src="assets/renoTracker.webp"
-                  alt=""
-                  width="1438"
-                  height="1500"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-              <div class="experiments-item__content">
+            <div class="experiments-item__sheet experiments-mag">
+              <span class="experiments-mag__index" aria-hidden="true">02</span>
+              <div class="experiments-mag__grid">
+                <div class="experiments-mag__visual">
+                  <a
+                    href="renovation-tracker.html"
+                    class="experiments-mag__frame experiments-mag__frame--link"
+                    aria-label="Renovation tracker — open case study"
+                  >
+                    <div class="experiments-mag__crop experiments-mag__crop--landscape-compact">
+                      <img
+                        src="assets/renoTracker.webp"
+                        alt=""
+                        width="1438"
+                        height="1500"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div class="experiments-item__content experiments-mag__copy">
                 <h2 class="experiments-item__title" id="exp-reno-title">
                   <a href="renovation-tracker.html" class="experiments-item__title-link"
                     >Renovation tracker</a
@@ -162,11 +178,8 @@
                 <p class="experiments-item__action">
                   <a class="link" href="renovation-tracker.html">View case study →</a>
                 </p>
+                </div>
               </div>
-              <footer class="editorial-folio experiments-item__folio">
-                <span>Renovation tracker</span>
-                <span class="editorial-folio__num">02</span>
-              </footer>
             </div>
           </div>
         </section>
@@ -175,13 +188,23 @@
           class="section experiments-item"
           id="exp-dress"
           aria-labelledby="exp-dress-title"
+          hidden
+          aria-hidden="true"
         >
           <div class="section__inner experiments-item__inner">
-            <div class="experiments-item__sheet">
-              <div class="experiments-item__media experiments-item__media--placeholder">
-                <span class="visually-hidden">Striped Illusion Dress — visual coming soon</span>
-              </div>
-              <div class="experiments-item__content">
+            <div class="experiments-item__sheet experiments-mag">
+              <span class="experiments-mag__index" aria-hidden="true">03</span>
+              <div class="experiments-mag__grid">
+                <div class="experiments-mag__visual">
+                  <div class="experiments-mag__frame">
+                    <div
+                      class="experiments-mag__crop experiments-mag__crop--landscape-compact experiments-mag__crop--placeholder"
+                    >
+                      <span class="visually-hidden">Striped Illusion Dress — visual coming soon</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="experiments-item__content experiments-mag__copy">
                 <h2 class="experiments-item__title" id="exp-dress-title">Striped Illusion Dress</h2>
                 <p class="experiments-item__description">
                   An optical-illusion garment built from stripes and movement alone — a
@@ -192,11 +215,8 @@
                   <span class="experiment-tag">Pattern-making</span>
                   <span class="experiment-tag">Textiles</span>
                 </div>
+                </div>
               </div>
-              <footer class="editorial-folio experiments-item__folio">
-                <span>Striped Illusion Dress</span>
-                <span class="editorial-folio__num">03</span>
-              </footer>
             </div>
           </div>
         </section>
@@ -207,18 +227,23 @@
           aria-labelledby="exp-tactile-sudoku-title"
         >
           <div class="section__inner experiments-item__inner">
-            <div class="experiments-item__sheet">
-              <a
-                href="tactile-sudoku.html"
-                class="experiments-item__media experiments-item__media--link"
-                aria-label="Tactile Sudoku — open layout preview"
-              >
-                <div
-                  class="editorial-grid-teaser experiments-item__tactile-sudoku-teaser"
-                  aria-hidden="true"
-                ></div>
-              </a>
-              <div class="experiments-item__content">
+            <div class="experiments-item__sheet experiments-mag">
+              <span class="experiments-mag__index" aria-hidden="true">03</span>
+              <div class="experiments-mag__grid">
+                <div class="experiments-mag__visual">
+                  <a
+                    href="tactile-sudoku.html"
+                    class="experiments-mag__frame experiments-mag__frame--link"
+                    aria-label="Tactile Sudoku — open layout preview"
+                  >
+                    <div
+                      class="experiments-mag__crop experiments-mag__crop--landscape-compact experiments-mag__crop--placeholder"
+                    >
+                      <span class="visually-hidden">Tactile Sudoku — visual coming soon</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="experiments-item__content experiments-mag__copy">
                 <p class="experiments-item__note">In Progress</p>
                 <h2 class="experiments-item__title" id="exp-tactile-sudoku-title">
                   <a href="tactile-sudoku.html" class="experiments-item__title-link"
@@ -240,14 +265,12 @@
                 <p class="experiments-item__action">
                   <a class="link" href="tactile-sudoku.html">View layout →</a>
                 </p>
+                </div>
               </div>
-              <footer class="editorial-folio experiments-item__folio">
-                <span>Tactile Sudoku</span>
-                <span class="editorial-folio__num">04</span>
-              </footer>
             </div>
           </div>
         </section>
+        </div>
       </main>
     </div>
   </body>
