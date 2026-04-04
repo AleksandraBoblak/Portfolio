@@ -13,6 +13,7 @@ body {
 :root {
   --page-bg: #f4f2f0;
   --header-h: 72px;
+  --bottom-nav-h: 0px;
   /* Align main text column with hero headline (“I don’t believe…”) */
   --content-max: 1040px;
   --content-pad-x: 24px;
@@ -405,9 +406,9 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   object-position: 1.4% top center;
 }
 
-/* sudokuHands.webp — portrait in 5:3 crop: shift focal point down so hands stay visible */
+/* sudokuHands.webp — portrait in 5:3 crop; nudge vertical focal point */
 .card__media--cover .card__media-img.media-sudoku-hands {
-  object-position: center 70%;
+  object-position: center 48%;
 }
 
 /* Experiments mag: keep horizontal nudge, bias vertical toward lower frame */
@@ -553,7 +554,8 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 .section--about {
   padding-top: clamp(3.5rem, 10vw, 6rem);
   padding-bottom: clamp(3.5rem, 10vw, 6rem);
-  overflow: visible;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .section--about .about-stack {
@@ -607,32 +609,89 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   z-index: 0;
   width: 100%;
   overflow: visible;
-  container-type: inline-size;
 }
 
 .section--about .about-bg-word {
   position: absolute;
   z-index: 0;
-  left: 0;
-  width: 100%;
-  top: 50%;
+  text-transform: none;
+  /* Break out of .section__inner so the watermark spans the full visible viewport */
+  left: calc(50% - 50svw);
+  width: 100svw;
+  /* Vert. center of “About” = center of .about-paragraphs: offset by ½ (eyebrow line + its bottom margin) */
+  top: calc(50% + (clamp(12px, 1.05vw, 13px) * 0.6 + 5px));
   transform: translateY(-50%);
   text-align: center;
   pointer-events: none;
-  /* ~fill centered column width (“About” ≈ 5 glyphs); cqi tracks section__inner, not viewport */
-  font-size: clamp(4.25rem, 36cqi, 23rem);
+  /* Size from width so “About” spans the screen; vh caps huge glyphs on short viewports (vmin was capping wide layouts) */
+  font-size: clamp(10rem, min(38vw, 88vh), 108rem);
   font-weight: 600;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.058em;
   line-height: 0.82;
   color: rgba(0, 0, 0, 0.022);
   white-space: nowrap;
   user-select: none;
 }
 
-/* Browsers without container query length units: approximate column width */
-@supports not (font-size: 1cqi) {
+/* Browsers without small-viewport units: classic 100vw breakout */
+@supports not (width: 1svw) {
   .section--about .about-bg-word {
-    font-size: clamp(4.25rem, min(calc((min(100vw, var(--content-max)) - 2 * var(--content-pad-x)) / 2.65), 23rem), 23rem);
+    left: calc(50% - 50vw);
+    width: 100vw;
+  }
+}
+
+/* Mobile: copy vertically centred, left-aligned like the rest of the page; huge “About” behind, rotated −90° */
+@media (max-width: 699px) {
+  .section--about {
+    padding-top: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .section--about .about-bg-anchor {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-h) - 3rem);
+    min-height: calc(100svh - var(--header-h) - 3rem);
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  .section--about .about-bg-anchor .about-content {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
+  }
+
+  .section--about .about-bg-word {
+    top: calc(50% + (clamp(12px, 1.05vw, 13px) * 0.6 + 5px));
+    left: 85%;
+    right: auto;
+    bottom: auto;
+    width: max-content;
+    max-width: none;
+    writing-mode: horizontal-tb;
+    text-align: center;
+    white-space: nowrap;
+    /* Match desktop watermark (inherits body / system stack) */
+    font-weight: 600;
+    letter-spacing: -0.058em;
+    line-height: 0.82;
+    /* Same vertical logic as desktop: centroid of .about-paragraphs; centre with −50% / −50% then rotate */
+    font-size: clamp(
+      10rem,
+      min(calc((100vh - 3rem) / 2.95), calc((100vw - 2 * var(--content-pad-x) - 12px) / 0.66)),
+      34rem
+    );
+    font-size: clamp(
+      10rem,
+      min(calc((100svh - 3rem) / 2.95), calc((100svw - 2 * var(--content-pad-x) - 12px) / 0.66)),
+      34rem
+    );
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center center;
   }
 }
 
@@ -775,6 +834,11 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   .cards {
     grid-template-columns: 1fr;
   }
+
+  /* Home experiments: editorial selector is more specific than `.cards` alone */
+  .section--experiments-editorial .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -790,6 +854,68 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
   .hero::after {
     height: min(280px, 36vh);
+  }
+}
+
+/* Mobile: Home / Experiments / About as a bottom tab bar; identity stays in the top header */
+@media (max-width: 767px) {
+  :root {
+    --header-h: 72px;
+    --bottom-nav-h: 56px;
+  }
+
+  body {
+    scroll-padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .site-header__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .site-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    margin-top: 0;
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px var(--content-pad-x)
+      max(12px, calc(env(safe-area-inset-bottom, 0px) + 8px));
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 4px;
+    flex-wrap: nowrap;
+    background: rgba(244, 242, 240, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 -4px 28px rgba(0, 0, 0, 0.06);
+  }
+
+  .site-nav__link {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 6px 10px;
+    text-align: center;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .site-nav__link--active::after {
+    top: 0;
+    bottom: auto;
   }
 }
 
@@ -873,11 +999,6 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   background: transparent;
   box-shadow: none;
   border-radius: 0;
-}
-
-.about-page.experiments-page .experiments-hero__eyebrow {
-  color: var(--editorial-eyebrow);
-  margin-bottom: 14px;
 }
 
 .about-page.experiments-page .experiments-hero__title {
@@ -1143,9 +1264,6 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   color: var(--editorial-accent);
   font-variant-numeric: tabular-nums;
   pointer-events: none;
-  text-shadow:
-    0 0 1px rgba(255, 255, 255, 0.95),
-    0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 720px) {
@@ -1426,6 +1544,7 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 .about-main .about-connect .section__inner {
   display: block;
+  border-top: 0;
 }
 
 .about-main .about-connect .footer-links {
