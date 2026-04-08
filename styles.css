@@ -462,8 +462,8 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 }
 
 .section--experiments-editorial .section__header {
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--editorial-rule);
+  padding-bottom: 18px;
+  border-bottom: 0;
   margin-bottom: 28px;
 }
 
@@ -479,14 +479,36 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   color: var(--editorial-accent);
 }
 
-.section--experiments-editorial .card__index {
-  display: block;
-  margin: 0 0 10px;
-  font-size: 11px;
+/* Over image, aligned with experiments-mag__index scale + overlap */
+.section--experiments-editorial .card__media--cover .card__index {
+  position: absolute;
+  z-index: 2;
+  left: clamp(14px, 2.4vw, 26px);
+  top: clamp(-6px, -0.3vw, 4px);
+  transform: translate(-5%, -38%);
+  font-size: clamp(2.5rem, 6.2vw, 4.85rem);
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: -0.04em;
+  line-height: 0.78;
   color: var(--editorial-accent);
   font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.section--experiments-editorial .card.card--link {
+  overflow: visible;
+}
+
+.section--experiments-editorial .card__media--cover {
+  overflow: visible;
+}
+
+.section--experiments-editorial .card__media--cover .card__media-img {
+  border-radius: 6px 6px 0 0;
+}
+
+.section--experiments-editorial .card__body {
+  border-radius: 0 0 6px 6px;
 }
 
 /* Shared editorial utilities */
@@ -991,6 +1013,10 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   margin-inline: 0;
 }
 
+.about-page.experiments-page .experiments-spread .experiments-hero + .experiments-item {
+  margin-top: clamp(20px, 3vh, 40px);
+}
+
 .about-page.experiments-page .experiments-spread .experiments-item + .experiments-item .experiments-item__sheet {
   border-top: 1px solid var(--editorial-rule);
 }
@@ -1164,7 +1190,7 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   position: relative;
   overflow: visible;
   /* Left: inner margin inside the white card so half the index (translateX -50%) sits on white, not on the image */
-  padding-top: clamp(18px, 2.5vw, 28px);
+  padding-top: clamp(34px, 4.5vw, 52px);
   padding-right: clamp(16px, 2.4vw, 28px);
   padding-bottom: clamp(22px, 3vw, 34px);
   padding-left: clamp(52px, 8.5vw, 92px);
@@ -1254,8 +1280,8 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 .experiments-mag__index {
   position: absolute;
   z-index: 2;
-  left: 0;
-  top: 0;
+  left: clamp(10px, 1.6vw, 22px);
+  top: clamp(18px, 3vw, 36px);
   transform: none;
   font-size: clamp(2.75rem, 6.5vw, 5.25rem);
   font-weight: 600;
@@ -1988,11 +2014,20 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 .case-study-more__summary {
   cursor: pointer;
   list-style: none;
-  font-size: clamp(12px, 1.05vw, 13px);
-  letter-spacing: 0.14em;
+  font-size: clamp(13px, 1.25vw, 16px);
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  font-weight: inherit;
-  color: rgba(0, 0, 0, 0.45);
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.68);
+  transition: color 0.15s ease;
+}
+
+.case-study-more__summary:hover {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.case-study-more__summary:hover::after {
+  opacity: 0.88;
 }
 
 .case-study-more__summary::-webkit-details-marker {
