@@ -159,19 +159,131 @@
               <div class="case-study-more__body">
                 <section
                   class="case-study-process-block"
+                  aria-labelledby="research-block-title"
+                >
+                  <h2 class="section__eyebrow" id="research-block-title">
+                    RESEARCH
+                  </h2>
+                  <div
+                    class="case-study-process-block__grid case-study-process-block__grid--visual-left"
+                  >
+                    <figure class="case-study-process-block__figure">
+                      <img
+                        class="case-study-process-block__diagram case-study-process-block__diagram--ooux"
+                        src="assets/ooux-diagram.svg"
+                        alt="OOUX-style map: Keywords, Search, Catalogue, and Filters connect to Product; reviewing shows Anxious and Curious together, then attributes with View beside image; Cart with quantity, remove, and change amount; then checkout."
+                        width="940"
+                        height="480"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption class="case-study-process-placeholder__caption">
+                        OOUX · objects &amp; flows
+                      </figcaption>
+                    </figure>
+                    <div class="case-study-process-block__text">
+                      <p class="case-study-process-block__chunk">
+                        <strong>OOUX</strong> mapped core objects and actions from
+                        <strong>find → review → buy</strong>, so friction showed up as
+                        relationships, not only screens.
+                      </p>
+                      <p class="case-study-process-block__chunk">
+                        A small <strong>embodied study</strong> (cooking — outside my
+                        comfort zone) highlighted how <strong>starting points, play,
+                        and picturing a finished piece</strong> pull people forward.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                <section
+                  class="case-study-process-block"
+                  aria-labelledby="issues-insights-section-title"
+                >
+                  <h2 class="visually-hidden" id="issues-insights-section-title">
+                    Issues and insights
+                  </h2>
+                  <div
+                    class="case-study-process-block__grid case-study-process-block__grid--text-left case-study-process-block__grid--issues"
+                  >
+                    <div class="case-study-process-block__text">
+                      <p class="section__eyebrow">KEY ISSUES</p>
+                      <div
+                        class="case-study-process-cards"
+                        role="list"
+                        aria-label="Key issues"
+                      >
+                        <div class="case-study-process-card" role="listitem">
+                          <strong>Flat category grids</strong> — little hierarchy, hard
+                          to scan.
+                        </div>
+                        <div class="case-study-process-card" role="listitem">
+                          Long lists <strong>without filters</strong> that match how
+                          people choose.
+                        </div>
+                        <div class="case-study-process-card" role="listitem">
+                          <strong>Expert jargon</strong> that pushes newcomers away.
+                        </div>
+                        <div class="case-study-process-card" role="listitem">
+                          Overall <strong>readability</strong> and scan suffered.
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="case-study-process-block__text case-study-process-block__text--stack"
+                    >
+                      <p class="section__eyebrow">INSIGHTS</p>
+                      <div
+                        class="case-study-process-cards"
+                        role="list"
+                        aria-label="Insights from research"
+                      >
+                        <div class="case-study-process-card" role="listitem">
+                          Beginners want a clear <strong>starting point</strong> — what
+                          to make first.
+                        </div>
+                        <div class="case-study-process-card" role="listitem">
+                          Creativity shows up in <strong>play and small
+                          adjustments</strong>.
+                        </div>
+                        <div class="case-study-process-card" role="listitem">
+                          Motivation lifts when people <strong>see the finished
+                          piece</strong> in mind.
+                        </div>
+                        <div class="case-study-process-card" role="listitem">
+                          <strong>Appreciation</strong> helps the process stick in memory.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section
+                  class="case-study-process-block"
                   aria-labelledby="process-block-title"
                 >
                   <h2 class="section__eyebrow" id="process-block-title">
                     How it took shape
                   </h2>
+                  <p class="case-study-process-block__chunk case-study-process-block__chunk--process-lead">
+                    Four moves from <strong>technical browsing to reflection</strong>,
+                    each mocked in <strong>Figma</strong> and checked in
+                    <strong>Lovable</strong> for tone and flow. The screens below are
+                    the outcomes — each move responds to something that was broken in
+                    the old experience.
+                  </p>
+                  <p class="case-study-process-block__chunk case-study-process-block__chunk--process-overview">
+                    Before: it felt like a <strong>dense catalog</strong>, not a studio —
+                    <strong>taxonomy and copy</strong> assumed expert material
+                    knowledge, and there was <strong>little help</strong> when people
+                    felt stuck or uninspired.
+                  </p>
                   <div
                     class="case-study-process-block__grid case-study-process-block__grid--text-left case-study-process-block__grid--process-moves"
                   >
                     <div class="case-study-process-block__text">
-                      <p class="case-study-process-block__chunk">
-                        Four moves, from technical browsing to reflection —
-                        <strong>prototyped in Figma and Lovable</strong> so the tone
-                        could be tested early.
+                      <p class="section__eyebrow case-study-process-moves-mockups__eyebrow">
+                        Directions in the prototype
                       </p>
                       <div
                         class="process-tabs process-tabs--stacked"
@@ -209,7 +321,7 @@
                               aria-controls="process-panel-1"
                               tabindex="-1"
                               data-move-src="assets/InspirationFirst.png"
-                              data-move-alt="Figma mockup: inspiration-first landing with exploration and a short quiz toward mood boards, fabrics, Pinterest, and peer projects."
+                              data-move-alt="Figma mockup: inspiration-first landing with style quiz and personalised mood boards, fabrics, Pinterest, and peer projects."
                               data-move-caption="Inspiration-first landing"
                             >
                               Inspiration-first landing
@@ -255,8 +367,15 @@
                           aria-labelledby="process-tab-0"
                         >
                           <p class="process-tabs__summary">
-                            <strong>Conversational filters</strong> for desired outcomes
-                            and tactile preferences — not only composition.
+                            <strong>Conversational filtering</strong> — outcomes and feel,
+                            not only specs; filters ask about tactility and composition
+                            too.
+                          </p>
+                          <p class="process-tabs__problem">
+                            <span class="process-tabs__problem-label">Problem it addresses: </span>
+                            Finding materials meant drilling through
+                            <strong>technical filters and labels</strong>, not the outcome
+                            or feel you wanted.
                           </p>
                         </div>
                         <div
@@ -267,9 +386,15 @@
                           hidden
                         >
                           <p class="process-tabs__summary">
-                            Homepage leads with <strong>exploration</strong>; a short
-                            quiz routes to mood boards, fabrics, Pinterest, and peer
-                            projects.
+                            <strong>Inspiration-first landing</strong> instead of
+                            category walls; a short <strong>style quiz</strong> opens
+                            <strong>personalised mood boards</strong> for stuck users,
+                            plus fabrics, Pinterest, and peer work.
+                          </p>
+                          <p class="process-tabs__problem">
+                            <span class="process-tabs__problem-label">Problem it addresses: </span>
+                            The <strong>homepage and category walls</strong> gave no
+                            inspiring entry when you didn’t already know what to make.
                           </p>
                         </div>
                         <div
@@ -280,8 +405,14 @@
                           hidden
                         >
                           <p class="process-tabs__summary">
-                            <strong>Real customer work</strong> on product pages;
-                            what you can make with each material.
+                            <strong>Product pages</strong> foreground real customer work
+                            and what you can make with each material — making inspiration
+                            achievable, not only aspirational.
+                          </p>
+                          <p class="process-tabs__problem">
+                            <span class="process-tabs__problem-label">Problem it addresses: </span>
+                            <strong>Product views</strong> didn’t show real projects or
+                            what a material was for — ideas stayed abstract.
                           </p>
                         </div>
                         <div
@@ -292,8 +423,13 @@
                           hidden
                         >
                           <p class="process-tabs__summary">
-                            <strong>Inspiration Diary</strong> — save boards, note
-                            projects, and see preferences accrue over time.
+                            <strong>Inspiration Diary</strong> — save ideas, note
+                            projects, and track preferences over time.
+                          </p>
+                          <p class="process-tabs__problem">
+                            <span class="process-tabs__problem-label">Problem it addresses: </span>
+                            There was <strong>nowhere to save inspiration</strong> or see
+                            your taste accrue when motivation dipped.
                           </p>
                           <p class="process-tabs__outbound">
                             <a href="#" class="link">View diary →</a>
@@ -318,178 +454,6 @@
                         From technical to human · Figma
                       </figcaption>
                     </figure>
-                  </div>
-                </section>
-
-                <section
-                  class="case-study-process-block"
-                  aria-labelledby="research-block-title"
-                >
-                  <h2 class="section__eyebrow" id="research-block-title">
-                    RESEARCH
-                  </h2>
-                  <div
-                    class="case-study-process-block__grid case-study-process-block__grid--visual-left"
-                  >
-                    <figure class="case-study-process-block__figure">
-                      <div
-                        class="case-study-process-placeholder case-study-process-placeholder--ooux"
-                        role="img"
-                        aria-label="Placeholder for OOUX and flow diagrams"
-                      ></div>
-                      <figcaption class="case-study-process-placeholder__caption">
-                        OOUX / flow · placeholder
-                      </figcaption>
-                    </figure>
-                    <div class="case-study-process-block__text">
-                      <p class="case-study-process-block__chunk">
-                        The original site leaned on <strong>dense category cards</strong>
-                        and long product lists with little filtering.
-                      </p>
-                      <p class="case-study-process-block__chunk">
-                        Organization assumed <strong>technical knowledge</strong> —
-                        hard for beginners; hierarchy and readability suffered.
-                      </p>
-                      <p class="case-study-process-block__chunk">
-                        An <strong>OOUX analysis</strong> mapped core flows and
-                        friction.
-                      </p>
-                      <p class="case-study-process-block__chunk">
-                        I also ran a small <strong>embodied study</strong> (cooking —
-                        outside my comfort zone) to notice how <strong>starting
-                        points, play, and imagining an outcome</strong> shape
-                        motivation.
-                      </p>
-                    </div>
-                  </div>
-                </section>
-
-                <section
-                  class="case-study-process-block"
-                  aria-labelledby="issues-insights-title"
-                >
-                  <h2 class="visually-hidden" id="issues-insights-title">
-                    Key issues and insights
-                  </h2>
-                  <div
-                    class="case-study-process-block__grid case-study-process-block__grid--text-left case-study-process-block__grid--issues"
-                  >
-                    <div class="case-study-process-block__text">
-                      <p class="section__eyebrow">KEY ISSUES</p>
-                      <div
-                        class="case-study-process-cards"
-                        role="list"
-                        aria-label="Key issues"
-                      >
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Dense category cards</strong> with weak visual
-                          hierarchy.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Long product lists <strong>without useful filtering</strong>.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Technical terminology</strong> that alienates
-                          newcomers.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Poor <strong>scan</strong> and overall readability.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="case-study-process-block__text case-study-process-block__text--stack">
-                      <p class="section__eyebrow">INSIGHTS</p>
-                      <div
-                        class="case-study-process-cards"
-                        role="list"
-                        aria-label="Insights"
-                      >
-                        <div class="case-study-process-card" role="listitem">
-                          Beginners need a <strong>starting point</strong> for what to
-                          make.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          The creative moment lives in <strong>play and
-                          adjustment</strong>.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Motivation grows from <strong>picturing the finished
-                          piece</strong>.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Appreciation</strong> makes the process stick in
-                          memory.
-                        </div>
-                      </div>
-                      <figure class="case-study-process-block__figure case-study-process-block__figure--inline">
-                        <div
-                          class="case-study-process-placeholder case-study-process-placeholder--board"
-                          role="img"
-                          aria-label="Placeholder for inspiration board"
-                        ></div>
-                        <figcaption class="case-study-process-placeholder__caption">
-                          Inspiration board · placeholder
-                        </figcaption>
-                      </figure>
-                    </div>
-                  </div>
-                </section>
-
-                <section
-                  class="case-study-process-block"
-                  aria-labelledby="problem-outcomes-title"
-                >
-                  <h2 class="visually-hidden" id="problem-outcomes-title">
-                    Problem and outcomes
-                  </h2>
-                  <div class="case-study-process-compare">
-                    <div class="case-study-process-compare__col">
-                      <p class="section__eyebrow">PROBLEM</p>
-                      <div
-                        class="case-study-process-cards case-study-process-cards--compare"
-                        role="list"
-                        aria-label="Problem"
-                      >
-                        <div class="case-study-process-card" role="listitem">
-                          The site functioned as a <strong>catalog</strong>, not a
-                          creative companion.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Taxonomy and copy</strong> assumed expert material
-                          knowledge.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Little help for people who feel <strong>stuck or
-                          uninspired</strong>.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="case-study-process-compare__col">
-                      <p class="section__eyebrow">KEY OUTCOMES</p>
-                      <div
-                        class="case-study-process-cards case-study-process-cards--compare"
-                        role="list"
-                        aria-label="Key outcomes"
-                      >
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Conversational filtering</strong> — outcomes and
-                          feel, not only specs.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Inspiration-first landing</strong> instead of
-                          category walls.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Style quiz —
-                          <strong>personalised mood boards</strong> for
-                          stuck users.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Inspiration Diary</strong> — save ideas and track
-                          preferences over time.
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </section>
               </div>

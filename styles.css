@@ -1347,9 +1347,56 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   padding-top: calc(var(--header-h) + 36px);
 }
 
+/* About page hero: reuse home "hero-sky", shift crop for variety */
+.about-page .about-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-page .about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("assets/hero-sky.webp");
+  background-size: cover;
+  /* Different crop vs home (home is center 25%) */
+  background-position: 70% 32%;
+  opacity: 0.72;
+  filter: blur(10px) brightness(1.08) saturate(1.05);
+  transform: scaleX(-1) scale(1.06);
+}
+
+.about-page .about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(248, 208, 210, 0.18), transparent 58%),
+    radial-gradient(circle at 78% 14%, rgba(212, 224, 246, 0.14), transparent 55%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.10), rgba(244, 242, 240, 0.40)),
+    linear-gradient(
+      to bottom,
+      rgba(244, 242, 240, 0) 38%,
+      rgba(244, 242, 240, 0.22) 70%,
+      rgba(244, 242, 240, 0.64) 88%,
+      rgba(244, 242, 240, 1) 96%,
+      var(--page-bg) 100%
+    );
+}
+
+.about-page .about-hero > .section__inner {
+  position: relative;
+  z-index: 2;
+}
+
 .about-page:not(.case-study-page) .about-values {
   position: relative;
-  background-color: var(--page-bg);
+  /* Slightly above --page-bg (#f4f2f0) for a lighter band without breaking the hero seam */
+  background-color: #f8f6f4;
   overflow: hidden;
 }
 
@@ -1363,26 +1410,30 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     linear-gradient(
       180deg,
       var(--page-bg) 0%,
-      rgba(244, 242, 240, 0) 14%,
-      rgba(244, 242, 240, 0) 86%,
+      rgba(248, 246, 244, 0) 18%,
+      rgba(248, 246, 244, 0) 86%,
       var(--page-bg) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(244, 242, 240, 0.52) 100%
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(250, 248, 246, 0.55) 45%,
+      rgba(247, 245, 243, 0.42) 100%
     ),
-    radial-gradient(ellipse 85% 60% at 22% 26%, rgba(248, 208, 210, 0.3), transparent),
-    radial-gradient(ellipse 75% 55% at 78% 16%, rgba(212, 224, 246, 0.22), transparent),
-    url("assets/hero-sky.webp");
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, cover;
-  background-position: 0 0, 0 0, 0 0, 0 0, center top;
+    radial-gradient(ellipse 85% 60% at 22% 26%, rgba(248, 208, 210, 0.18), transparent),
+    radial-gradient(ellipse 75% 55% at 78% 16%, rgba(212, 224, 246, 0.14), transparent);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0, 0 0;
   background-repeat: no-repeat;
 }
 
 .about-page:not(.case-study-page) .about-values .section__inner {
   position: relative;
   z-index: 1;
+  border-top: 0;
+}
+
+.about-page:not(.case-study-page) .about-experiments .section__inner {
   border-top: 0;
 }
 
@@ -1400,6 +1451,13 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   font-size: clamp(26px, 2.8vw, 30px);
   line-height: 1.48;
   color: rgba(0, 0, 0, 0.78);
+}
+
+.about-lead.about-lead--rest {
+  margin-bottom: 18px;
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .about-columns {
@@ -1434,6 +1492,9 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 }
 
 .about-experiments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
   margin: 1.75rem 0 0;
   padding: 0;
   list-style: none;
@@ -1441,17 +1502,24 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 }
 
 .about-experiments-list__item {
-  padding: 1.35rem 0 1.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 28px;
 }
 
-.about-experiments-list__item:first-child {
-  padding-top: 0.35rem;
-}
-
-.about-experiments-list__item:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+.about-experiments-list__item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: calc(15px * 1.35);
+  font-size: 15px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.52);
+  font-weight: 400;
+  pointer-events: none;
 }
 
 .about-experiments-list__title {
@@ -2107,12 +2175,31 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   align-items: start;
 }
 
+/* Desktop: stable row height when switching tabs (text + mockup columns) */
+@media (min-width: 769px) {
+  .case-study-process-block__grid--process-moves {
+    min-height: clamp(29rem, 55vh, 44rem);
+  }
+
+  .case-study-process-block__grid--process-moves .process-tabs--stacked .process-tabs__panel {
+    min-height: 17.5rem;
+  }
+
+  .case-study-process-block__grid--process-moves .process-move-visual-frame {
+    min-height: clamp(22rem, 42vh, 520px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
 .case-study-process-block__grid--process-moves .case-study-process-block__text {
   max-width: 100%;
 }
 
 .case-study-process-block__grid--process-moves .case-study-process-block__chunk,
-.case-study-process-block__grid--process-moves .process-tabs__summary {
+.case-study-process-block__grid--process-moves .process-tabs__summary,
+.case-study-process-block__grid--process-moves .process-tabs__problem {
   max-width: 100%;
 }
 
@@ -2136,10 +2223,6 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   width: 100%;
 }
 
-.case-study-process-block__figure--inline {
-  margin-top: 1.5rem;
-}
-
 .case-study-process-block__chunk {
   margin: 0 0 1rem;
   font-size: 14px;
@@ -2150,6 +2233,41 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 .case-study-process-block__chunk:last-child {
   margin-bottom: 0;
+}
+
+.case-study-process-block__chunk--process-lead {
+  max-width: 40rem;
+  margin-bottom: 0.75rem;
+}
+
+.case-study-process-block__chunk--process-overview {
+  max-width: 40rem;
+  margin: 0 0 clamp(20px, 3vw, 32px);
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.case-study-process-moves-mockups__eyebrow {
+  margin: 0 0 10px;
+}
+
+.process-tabs--stacked .process-tabs__panel .process-tabs__summary {
+  margin: 0 0 0.3rem;
+  font-size: 13px;
+  line-height: 1.42;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.process-tabs--stacked .process-tabs__panel .process-tabs__problem {
+  margin: 0 0 0.4rem;
+  font-size: 13px;
+  line-height: 1.42;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.process-tabs--stacked .process-tabs__outbound {
+  margin-top: 0.55rem;
 }
 
 .case-study-process-placeholder {
@@ -2186,37 +2304,32 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 .case-study-process-block__figure--process-moves .case-study-process-placeholder__caption {
   width: 100%;
+  margin-top: 6px;
   text-align: right;
   box-sizing: border-box;
 }
 
 .process-move-visual-frame {
-  --process-move-aspect-w: 1438;
-  --process-move-aspect-h: 1362;
   --process-move-max-h: min(85vh, 860px);
-  width: min(100%, calc(var(--process-move-max-h) * var(--process-move-aspect-w) / var(--process-move-aspect-h)));
-  max-width: 100%;
-  aspect-ratio: var(--process-move-aspect-w) / var(--process-move-aspect-h);
-  max-height: var(--process-move-max-h);
+  width: 100%;
+  max-width: min(100%, calc(var(--process-move-max-h) * 1438 / 1362));
   margin-inline: 0;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 0;
   background: rgba(255, 255, 255, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-sizing: border-box;
 }
 
 .process-move-visual-frame .process-move-visual-img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
   display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: var(--process-move-max-h);
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: top center;
 }
 
 .case-study-process-placeholder--ooux {
@@ -2224,9 +2337,21 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   min-height: 180px;
 }
 
-.case-study-process-placeholder--board {
-  aspect-ratio: 16 / 10;
-  min-height: 140px;
+.case-study-process-block__diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 0;
+  background: #faf9f7;
+  box-sizing: border-box;
+}
+
+.case-study-process-block__diagram--ooux {
+  aspect-ratio: 940 / 480;
+  max-height: min(72vh, 420px);
+  object-fit: contain;
+  object-position: top center;
 }
 
 .case-study-process-placeholder__caption {
@@ -2349,16 +2474,6 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(0, 0, 0, 0.07);
   border-radius: 8px;
-  transition:
-    border-color 0.15s ease,
-    background 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.case-study-process-card:hover {
-  border-color: rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 .case-study-process-compare {

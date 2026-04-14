@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 480" fill="none" aria-hidden="true">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .t { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; fill: rgba(0,0,0,0.82); }
+      .t-sm { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; fill: rgba(0,0,0,0.45); }
+      .t-note { font-size: 10px; font-weight: 500; line-height: 1.2; }
+      .t-phase { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: rgba(0,0,0,0.55); }
+      .stroke { stroke: rgba(0,0,0,0.14); stroke-width: 1; }
+    ]]></style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="rgba(0,0,0,0.28)"/>
+    </marker>
+  </defs>
+
+  <rect width="940" height="480" rx="10" fill="#faf9f7"/>
+  <rect x="0.5" y="0.5" width="939" height="479" rx="10" class="stroke" fill="none"/>
+
+  <!-- Legend -->
+  <text x="28" y="28" class="t t-sm">Legend</text>
+  <g transform="translate(28, 38)">
+    <rect width="56" height="18" rx="3" fill="#f0e8c8"/><text x="6" y="13" class="t t-note" font-size="8">Primary</text>
+    <rect x="64" width="56" height="18" rx="3" fill="#edd4b8"/><text x="70" y="13" class="t t-note" font-size="8">Secondary</text>
+    <rect x="128" width="56" height="18" rx="3" fill="#c8e3d0"/><text x="134" y="13" class="t t-note" font-size="8">Attributes</text>
+    <rect x="192" width="52" height="18" rx="3" fill="#f0d0d0"/><text x="198" y="13" class="t t-note" font-size="8">Actions</text>
+    <rect x="252" width="58" height="18" rx="3" fill="#ddd0ec"/><text x="258" y="13" class="t t-note" font-size="8">Emotion</text>
+  </g>
+
+  <!-- Phase 1: Finding (group origin 28,108) -->
+  <text x="46" y="98" class="t t-phase">Finding a product</text>
+  <g id="finding" transform="translate(28, 108)">
+    <rect width="76" height="22" rx="4" fill="#ddd0ec"/><text x="8" y="15" class="t t-note">Frustrated</text>
+    <rect y="28" width="76" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="43" class="t t-note">Enter keywords</text>
+    <rect id="note-keywords" y="56" width="76" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="71" class="t t-note">Keywords</text>
+
+    <g transform="translate(88,0)">
+      <rect width="100" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="15" class="t t-note">Search products</text>
+      <rect id="note-search" y="28" width="100" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="43" class="t t-note">Search</text>
+    </g>
+    <g transform="translate(200,0)">
+      <rect width="92" height="22" rx="4" fill="#ddd0ec"/><text x="8" y="15" class="t t-note">Overwhelmed</text>
+      <rect y="28" width="92" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="43" class="t t-note">Explore catalog</text>
+      <rect id="note-catalogue" y="56" width="92" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="71" class="t t-note">Catalogue</text>
+      <rect y="84" width="92" height="22" rx="4" fill="#edd4b8"/><text x="8" y="99" class="t t-note">Categories</text>
+    </g>
+    <g transform="translate(304,28)">
+      <rect width="108" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="15" class="t t-note">Add filters</text>
+      <rect id="note-filters" y="28" width="108" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="43" class="t t-note">Filters</text>
+    </g>
+  </g>
+
+  <!-- Four arrows: Keywords, Search, Catalogue, Filters → Product (separate primary boxes) -->
+  <!-- Product top center abs: x=447, y=164 (group 392,108 + Product y=56) -->
+  <path d="M 66 186 C 180 120 360 130 447 164" stroke="rgba(0,0,0,0.22)" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 166 158 C 260 115 380 125 447 164" stroke="rgba(0,0,0,0.22)" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 274 186 C 340 135 400 145 447 164" stroke="rgba(0,0,0,0.22)" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 386 186 C 410 150 430 155 447 164" stroke="rgba(0,0,0,0.22)" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Phase 2: emotions grouped; View beside Image; Description full width; Save only -->
+  <text x="400" y="98" class="t t-phase">Reviewing the product</text>
+  <g transform="translate(392, 108)">
+    <rect width="72" height="22" rx="4" fill="#ddd0ec"/><text x="8" y="15" class="t t-note" font-size="9">Anxious</text>
+    <rect x="78" width="72" height="22" rx="4" fill="#ddd0ec"/><text x="86" y="15" class="t t-note" font-size="9">Curious</text>
+    <rect y="28" width="150" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="43" class="t t-note">Compare, cart…</text>
+    <rect id="note-product" y="56" width="110" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="71" class="t t-note">Product</text>
+
+    <rect y="84" width="100" height="20" rx="3" fill="#c8e3d0"/><text x="6" y="98" class="t t-note" font-size="9">Image, care, specs</text>
+    <rect x="106" y="84" width="58" height="20" rx="3" fill="#f0d0d0"/><text x="112" y="98" class="t t-note" font-size="9">View</text>
+
+    <rect y="108" width="164" height="20" rx="3" fill="#c8e3d0"/><text x="6" y="122" class="t t-note" font-size="9">Description, price</text>
+
+    <rect y="136" width="72" height="20" rx="4" fill="#f0d0d0"/><text x="8" y="150" class="t t-note" font-size="9">Save</text>
+  </g>
+
+  <!-- Arrow Product → Cart -->
+  <path d="M 447 186 C 540 205 640 150 756 108" stroke="rgba(0,0,0,0.22)" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Phase 3: Buying — actions spelled out (no “Qty” as shorthand) -->
+  <text x="728" y="98" class="t t-phase">Buying the product</text>
+  <g transform="translate(702, 108)">
+    <rect width="108" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="15" class="t t-note">Cart</text>
+    <rect y="28" width="108" height="22" rx="4" fill="#c8e3d0"/><text x="8" y="43" class="t t-note" font-size="9">Quantity</text>
+    <rect y="54" width="108" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="69" class="t t-note" font-size="9">Remove item</text>
+    <rect y="80" width="108" height="22" rx="4" fill="#f0d0d0"/><text x="8" y="95" class="t t-note" font-size="9">Change amount</text>
+    <rect y="106" width="108" height="22" rx="4" fill="#ddd0ec"/><text x="8" y="121" class="t t-note">Relieved</text>
+
+    <g transform="translate(120, 0)">
+      <rect width="104" height="22" rx="4" fill="#f0e8c8"/><text x="8" y="15" class="t t-note">Checkout</text>
+      <rect y="28" width="104" height="36" rx="4" fill="#f0d0d0"/><text x="8" y="42" class="t t-note">Pay, account</text>
+    </g>
+  </g>
+</svg>
