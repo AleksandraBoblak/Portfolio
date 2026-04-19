@@ -76,6 +76,10 @@
         <section class="section case-study-designed">
           <div class="section__inner">
             <p class="section__eyebrow">WHAT I DESIGNED</p>
+            <p class="section__body-copy">
+              A before-and-after homepage concept and clickable prototype — so people
+              can start from inspiration and intent, not only from material categories.
+            </p>
 
             <div class="case-study-compare" data-case-study-compare>
               <p
@@ -151,7 +155,26 @@
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
+        <section class="section case-study-experiment-key-idea">
+          <div class="section__inner">
+            <div class="case-study-key-idea">
+              <p class="section__eyebrow">KEY IDEA</p>
+              <p class="case-study-key-idea__text">
+                A craft store is more than a list of products — it's a starting point
+                for someone's creative journey.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section case-study-experiment-process"
+          aria-label="More about the process"
+        >
+          <div class="section__inner">
             <details class="case-study-more">
               <summary class="case-study-more__summary">
                 More about the process
@@ -187,73 +210,70 @@
                         <strong>find → review → buy</strong>, so friction showed up as
                         relationships, not only screens.
                       </p>
-                      <p class="case-study-process-block__chunk">
-                        A small <strong>embodied study</strong> (cooking — outside my
-                        comfort zone) highlighted how <strong>starting points, play,
-                        and picturing a finished piece</strong> pull people forward.
+                      <p class="section__eyebrow case-study-research-block__issues-eyebrow">
+                        KEY ISSUES
                       </p>
-                    </div>
-                  </div>
-                </section>
-
-                <section
-                  class="case-study-process-block"
-                  aria-labelledby="issues-insights-section-title"
-                >
-                  <h2 class="visually-hidden" id="issues-insights-section-title">
-                    Issues and insights
-                  </h2>
-                  <div
-                    class="case-study-process-block__grid case-study-process-block__grid--text-left case-study-process-block__grid--issues"
-                  >
-                    <div class="case-study-process-block__text">
-                      <p class="section__eyebrow">KEY ISSUES</p>
-                      <div
-                        class="case-study-process-cards"
-                        role="list"
-                        aria-label="Key issues"
-                      >
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Flat category grids</strong> — little hierarchy, hard
-                          to scan.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
+                      <ul class="case-study-bullets" aria-label="Key issues">
+                        <li>
+                          <strong>Flat category grids</strong> with little hierarchy —
+                          hard to scan.
+                        </li>
+                        <li>
                           Long lists <strong>without filters</strong> that match how
                           people choose.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
+                        </li>
+                        <li>
                           <strong>Expert jargon</strong> that pushes newcomers away.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Overall <strong>readability</strong> and scan suffered.
-                        </div>
-                      </div>
+                        </li>
+                        <li>
+                          Overall <strong>readability</strong> suffered.
+                        </li>
+                      </ul>
                     </div>
-                    <div
-                      class="case-study-process-block__text case-study-process-block__text--stack"
-                    >
-                      <p class="section__eyebrow">INSIGHTS</p>
-                      <div
-                        class="case-study-process-cards"
-                        role="list"
-                        aria-label="Insights from research"
-                      >
-                        <div class="case-study-process-card" role="listitem">
-                          Beginners want a clear <strong>starting point</strong> — what
-                          to make first.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Creativity shows up in <strong>play and small
-                          adjustments</strong>.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          Motivation lifts when people <strong>see the finished
-                          piece</strong> in mind.
-                        </div>
-                        <div class="case-study-process-card" role="listitem">
-                          <strong>Appreciation</strong> helps the process stick in memory.
-                        </div>
+                  </div>
+
+                  <div class="case-study-research-block__below">
+                    <div class="case-study-research-block__embodied">
+                      <div class="case-study-research-block__embodied-text">
+                        <p class="section__eyebrow case-study-research-block__subhead">
+                          EMBODIED RESEARCH
+                        </p>
+                        <p class="case-study-process-block__chunk case-study-research-block__chunk">
+                          A small <strong>embodied study</strong> (cooking — outside my
+                          comfort zone) highlighted how <strong>starting points, play, and
+                          picturing a finished piece</strong> pull people forward.
+                        </p>
+
+                        <p class="section__eyebrow case-study-research-block__subhead">
+                          INSIGHTS
+                        </p>
+                        <ul class="case-study-bullets" aria-label="Insights from research">
+                          <li>
+                            Beginners want a clear <strong>starting point</strong> — what to
+                            make first.
+                          </li>
+                          <li>
+                            Creativity shows up in <strong>play and small adjustments</strong>.
+                          </li>
+                          <li>
+                            Motivation lifts when people <strong>see the finished piece</strong>
+                            in mind.
+                          </li>
+                          <li>
+                            <strong>Appreciation</strong> helps the process stick in memory.
+                          </li>
+                        </ul>
                       </div>
+                      <figure class="case-study-research-block__figure">
+                        <img
+                          class="case-study-research-block__img"
+                          src="assets/cooking.png"
+                          alt="Photo from embodied study: cooking outside my comfort zone."
+                          loading="lazy"
+                          decoding="async"
+                        />
+
+                      </figure>
                     </div>
                   </div>
                 </section>
@@ -450,35 +470,20 @@
                           decoding="async"
                         />
                       </div>
-                      <figcaption class="case-study-process-placeholder__caption">
-                        From technical to human · Figma
-                      </figcaption>
                     </figure>
                   </div>
                 </section>
               </div>
             </details>
-          </div>
-        </section>
 
-        <section class="section">
-          <div class="section__inner">
-            <div class="case-study-key-idea">
-              <p class="section__eyebrow">KEY IDEA</p>
-              <p class="case-study-key-idea__text">
-                A craft store is more than a list of products — it's a starting point
-                for someone's creative journey.
+            <div class="case-study-experiment-footer">
+              <p class="case-study-back">
+                <a class="link" href="experiments.html">← All experiments</a>
+              </p>
+              <p class="case-study-experiment-folio editorial-folio__num">
+                01 Karnaluks redesign
               </p>
             </div>
-
-            <div class="editorial-folio">
-              <span>Karnaluks redesign</span>
-              <span class="editorial-folio__num">01</span>
-            </div>
-
-            <p class="case-study-back">
-              <a class="link" href="experiments.html">All experiments →</a>
-            </p>
           </div>
         </section>
         </div>

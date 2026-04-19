@@ -44,7 +44,9 @@
                 </p>
                 <div class="case-study-hero-meta">
                   <p class="case-study-meta">6 weeks (Mar–Apr 2026) · In progress</p>
-                  <p class="case-study-tools">Tools: Claude, Arduino, Autodesk Fusion</p>
+                  <p class="case-study-tools">
+                    Tools: Claude, Arduino, Autodesk Fusion
+                  </p>
                 </div>
               </div>
             </header>
@@ -52,26 +54,23 @@
 
           <section class="section tactile-sudoku-editorial__body-section">
             <div class="section__inner tactile-sudoku-editorial__sheet">
-              <div class="tactile-sudoku-editorial__layout">
-                <div class="tactile-sudoku-editorial__hero">
-                  <p class="tactile-sudoku-editorial__figure-label">Paper Prototype</p>
-                  <img
-                    class="tactile-sudoku-editorial__hero-img"
-                    src="assets/sudokuProto.jpg"
-                    alt="Physical Sudoku prototype with tactile pieces on a gridded board"
-                    width="1107"
-                    height="1280"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-
-                <aside class="tactile-sudoku-editorial__rail" aria-label="Puzzle metadata">
-                  <p class="section__eyebrow">Work in progress</p>
-                  <p class="tactile-sudoku-editorial__rail-text">
-                    First prototype made out of air-dry clay to test the concept.
+              <div
+                class="about-columns case-study-context-goal__columns tactile-sudoku-editorial__context-goal"
+              >
+                <div class="about-column">
+                  <p class="section__eyebrow">CONTEXT</p>
+                  <p class="section__body-copy">
+                    Sudoku is a popular puzzle game, but traditionally relies on your vision to solve it. Tactile 
+                    adaptations exist, but are still thin on flexibility and feedback; screen readers or a
+                    helper change the quiet, solitary rhythm that makes the game what it is.
                   </p>
-                </aside>
+                </div>
+                <div class="about-column">
+                  <p class="section__eyebrow">GOAL</p>
+                  <p class="section__body-copy">
+                    Our goal was to rebuild the puzzle for touch, so the game can be played without vision.
+                  </p>
+                </div>
               </div>
 
               <div class="tactile-sudoku-editorial__rule tactile-sudoku-editorial__rule--spaced" aria-hidden="true"></div>
@@ -80,10 +79,19 @@
                 <div class="about-column">
                   <p class="section__eyebrow">Tactile intent</p>
                   <p class="section__body-copy">
-                    Raised borders, differently shaped pawns, and haptic feedback are intended to allow people with low vision to solve the classic puzzle of sudoku. 
+                    A physical 6×6 Sudoku board designed so players with low vision 
+                    can enjoy the game independently.
                   </p>
                   <p class="section__body-copy">
-                    Pawns of different shapes and surface represent the numbers. Player relies on touch and vibration to navigate the board.
+                    The board is designed around touch. Instead of numbers, it uses 6 distinct shapes, 
+                    each with its own texture, making them easy to recognize by touch. 
+                    Textured navigation buttons make it easy to explore the grid and track where you are on the board.
+                  </p>
+                  <p class="section__body-copy">Unlike paper adaptations of tactile Sudoku, this board provides feedback through vibration and optional sound.
+                    Vibration confirms placements and flags issues; sound gives an additional clue for solving the puzzle.
+                  </p>
+                  <p class="section__body-copy">
+                    The result is a tactile, replayable interactive Sudoku experience that allows for independent play.
                   </p>
                 </div>
                 <div class="about-column tactile-sudoku-editorial__column-visual">
@@ -99,14 +107,190 @@
                 </div>
               </div>
 
-              <footer class="editorial-folio tactile-sudoku-editorial__folio">
-                <span>Tactile Sudoku</span>
-                <span class="editorial-folio__num">03</span>
-              </footer>
+              <div class="tactile-sudoku-editorial__rule tactile-sudoku-editorial__rule--spaced" aria-hidden="true"></div>
 
-              <p class="case-study-back">
-                <a class="link" href="experiments.html">All experiments →</a>
-              </p>
+              <div class="case-study-key-idea">
+                <p class="section__eyebrow">KEY IDEA</p>
+                <p class="case-study-key-idea__text">
+                  The best accessible Sudoku isn’t the old game translated—it’s the puzzle
+                  rebuilt around touch, so independence and focus stay intact.
+                </p>
+              </div>
+
+              <details class="case-study-more">
+                <summary class="case-study-more__summary">
+                  More about the process
+                </summary>
+                <div class="case-study-more__body">
+                  <section
+                    class="case-study-process-block tactile-sudoku-process-sub"
+                    aria-labelledby="tactile-process-prototyping-title"
+                  >
+                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-prototyping-title">
+                      PROTOTYPING
+                    </h3>
+                    <div
+                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-left"
+                    >
+                      <div class="tactile-sudoku-process-sub__figure">
+                        <img
+                          class="tactile-sudoku-process-sub__img"
+                          src="assets/sudokuProto.jpg"
+                          alt="Physical Sudoku prototype with tactile pieces on a gridded board"
+                          width="1107"
+                          height="1280"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div class="tactile-sudoku-process-sub__copy">
+                        <p class="tactile-sudoku-process-sub__lede">
+                          Clay on a gridded board — fast iteration before PCB and sensing.
+                        </p>
+                        <p class="section__body-copy">
+                          Air-dry clay and a simple grid tested whether six distinguishable pieces
+                          and clear cell edges were enough to play before locking in fabrication.
+                          Side-button layouts went through several texture and size passes—shape
+                          alone isn’t always enough when hands are already mapping space.
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="case-study-process-block tactile-sudoku-process-sub"
+                    aria-labelledby="tactile-process-simulator-title"
+                  >
+                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-simulator-title">
+                      ONLINE SIMULATION
+                    </h3>
+                    <div
+                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-right"
+                    >
+                      <div class="tactile-sudoku-process-sub__copy">
+                        <p class="section__body-copy">
+                          A lightweight online simulation helped check rules and feedback logic away
+                          from the hardware while the physical prototype evolved.
+                        </p>
+                        <p class="section__body-copy">
+                          <a
+                            href="https://aleksandraboblak.github.io/tactile-sudoku-simulator/tactile_sudoku_simulator.html"
+                            class="link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Open the simulator →</a>
+                        </p>
+                      </div>
+                      <div class="tactile-sudoku-process-sub__figure">
+                        <img
+                          class="tactile-sudoku-process-sub__img"
+                          src="assets/simulator.png"
+                          alt="Online Sudoku simulation used to validate rules and feedback before and alongside hardware builds"
+                          width="1162"
+                          height="1358"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="case-study-process-block tactile-sudoku-process-sub"
+                    aria-labelledby="tactile-process-fabrication-title"
+                  >
+                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-fabrication-title">
+                      FABRICATION
+                    </h3>
+                    <div
+                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-left"
+                    >
+                      <div class="tactile-sudoku-process-sub__figure">
+                        <img
+                          class="tactile-sudoku-process-sub__img"
+                          src="assets/meSoldering.jpg"
+                          alt="Soldering the copper-coated fibreglass board that will be the main Sudoku playing field"
+                          width="960"
+                          height="1280"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div class="tactile-sudoku-process-sub__copy">
+                        <p class="tactile-sudoku-process-sub__lede">
+                          Copper-clad fibreglass field—traces, contacts, and magnets in mind.
+                        </p>
+                        <p class="section__body-copy">
+                          The playing surface is a soldered copper board: conductive paths and
+                          contacts where pawns meet the grid. Magnets in the pieces pair with
+                          embedded hardware so pieces seat firmly and stay easy to explore by hand.
+                        </p>
+                        <p class="section__body-copy">
+                          Bench work—prep, soldering, sanding—closed the gap between layout drawings
+                          and what the sensing layer actually needed.
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    class="case-study-process-block tactile-sudoku-process-sub"
+                    aria-labelledby="tactile-process-electronics-title"
+                  >
+                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-electronics-title">
+                      ELECTRONICS
+                    </h3>
+                    <div
+                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-right"
+                    >
+                      <div class="tactile-sudoku-process-sub__copy">
+                        <p class="tactile-sudoku-process-sub__lede">
+                          Resistor in each pawn → firmware maps reads to six “digits.”
+                        </p>
+                        <p class="section__body-copy">
+                          Each pawn carries a resistor with a unique value; contact with the copper
+                          field lets the firmware tell which shape sits in a cell—no camera, no
+                          RFID—so the board can track the puzzle state for checks and feedback.
+                        </p>
+                        <ul class="about-list">
+                          <li>
+                            Calibrate ranges so adjacent values don’t bleed together at the edge of
+                            tolerance.
+                          </li>
+                          <li>
+                            Tame electrical bleed between rows and columns—signal isolation is the
+                            main hardware fight on a dense grid.
+                          </li>
+                          <li>
+                            Stress-test placement, lift, and re-seat so reads stay trustworthy in
+                            real play.
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tactile-sudoku-process-sub__figure">
+                        <img
+                          class="tactile-sudoku-process-sub__img"
+                          src="assets/arduinoTest.jpg"
+                          alt="Testing recognition of pawn resistors on the board and mapping them to numbers 1 through 6"
+                          width="960"
+                          height="1280"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </details>
+
+              <div class="case-study-experiment-footer">
+                <p class="case-study-back">
+                  <a class="link" href="experiments.html">← All experiments</a>
+                </p>
+                <p class="case-study-experiment-folio editorial-folio__num">
+                  03 Tactile Sudoku
+                </p>
+              </div>
             </div>
           </section>
         </article>
