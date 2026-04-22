@@ -31,6 +31,9 @@
 
       <main class="about-main">
         <section class="section about-hero">
+          <div class="about-hero__background" aria-hidden="true">
+            <div class="about-hero__ripple-layer"></div>
+          </div>
           <div class="section__inner">
             <h1 class="about-title">Hi there! I'm Aleksandra.</h1>
 
@@ -183,12 +186,21 @@
                   />
                 </svg>
               </a>
-              <a href="#" class="footer-link">LinkedIn ↗</a>
+              <a
+                href="https://www.linkedin.com/in/aleksandra-boblak"
+                class="footer-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn ↗</a
+              >
             </div>
           </div>
         </section>
       </main>
     </div>
+    <script src="assets/jquery.min.js" defer></script>
+    <script src="assets/jquery.ripples.min.js" defer></script>
+    <script src="hero-ripples.js" defer></script>
     <script src="email-copy.js" defer></script>
   </body>
   </html>

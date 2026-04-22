@@ -13,25 +13,46 @@
     return;
   }
 
-  var $layer = $(".hero__ripple-layer");
-  if (!$layer.length) return;
+  function init() {
+    try {
+      $(".hero__ripple-layer").each(function () {
+        var $layer = $(this);
+        $layer.ripples({
+          /* Use explicit imageUrl so the texture load is reliable */
+          imageUrl: "assets/hero-sky.webp",
+          /* Higher res = sharper photo in the shader; lower perturbance = image stays readable */
+          resolution: 768,
+          dropRadius: 18,
+          perturbance: 0.022,
+          interactive: true,
+          crossOrigin: "",
+        });
+      });
 
-  try {
-    $layer.ripples({
-      resolution: 512,
-      dropRadius: 22,
-      perturbance: 0.045,
-      interactive: true,
-    });
-  } catch (e) {
-    return;
+      $(".about-hero__ripple-layer").each(function () {
+        var $layer = $(this);
+        $layer.ripples({
+          imageUrl: "assets/hero-sky.webp",
+          resolution: 768,
+          dropRadius: 18,
+          perturbance: 0.022,
+          interactive: true,
+          crossOrigin: "",
+        });
+      });
+    } catch (e) {
+      return;
+    }
+
+    try {
+      $(".hero__ripple-layer, .about-hero__ripple-layer").ripples("show");
+    } catch (e) {
+      /* optional in some builds */
+    }
+
+    $(".hero, .about-hero").addClass("hero--ripples-on");
   }
 
-  try {
-    $layer.ripples("show");
-  } catch (e) {
-    /* optional in some builds */
-  }
-
-  $(".hero").addClass("hero--ripples-on");
+  /* Wait for the background image to be fully available before WebGL samples it */
+  $(window).on("load", init);
 })(window.jQuery);

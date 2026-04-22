@@ -188,13 +188,15 @@ main {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -1px;
-  height: min(240px, 30vh);
+  bottom: 0;
+  height: min(280px, 36vh);
+  /* Single fade into the same color as `.section` — no overlap hacks */
   background: linear-gradient(
     to bottom,
-    rgba(244, 242, 240, 0),
-    rgba(244, 242, 240, 0.45),
-    rgba(244, 242, 240, 0.88)
+    rgba(244, 242, 240, 0) 0%,
+    rgba(244, 242, 240, 0.12) 52%,
+    rgba(244, 242, 240, 0.42) 82%,
+    #f4f2f0 100%
   );
   z-index: 2;
   pointer-events: none;
@@ -207,30 +209,32 @@ main {
   z-index: 0;
 }
 
-/* Ripples target — jQuery Ripples samples this background in WebGL */
+/* Ripples target — jQuery Ripples samples this background in WebGL.
+   Avoid filter: on this node — it dulls the WebGL canvas and makes the photo look muddy. */
 .hero__ripple-layer {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background-image: url("assets/hero-sky.webp");
-  background-size: cover;
-  background-position: center 25%;
+  /* Visible image is provided by .hero__background::after.
+     Ripples uses imageUrl in JS, so we keep this layer transparent. */
+  background: transparent;
 }
 
 .hero__background::before {
   content: "";
   position: absolute;
   inset: 0;
+  /* Light touch so the photo stays visible; heavy creams were washing out all color */
   background:
-    radial-gradient(circle at 18% 18%, rgba(248, 208, 210, 0.22), transparent 58%),
-    radial-gradient(circle at 82% 12%, rgba(212, 224, 246, 0.16), transparent 55%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.12), rgba(244, 242, 240, 0.38)),
+    radial-gradient(circle at 18% 18%, rgba(248, 208, 210, 0.04), transparent 58%),
+    radial-gradient(circle at 82% 12%, rgba(212, 224, 246, 0.03), transparent 55%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02), rgba(244, 242, 240, 0.08)),
     linear-gradient(
       to bottom,
-      rgba(244, 242, 240, 0) 42%,
-      rgba(244, 242, 240, 0.18) 72%,
-      rgba(244, 242, 240, 0.55) 88%,
-      rgba(244, 242, 240, 0.82) 100%
+      rgba(244, 242, 240, 0) 56%,
+      rgba(244, 242, 240, 0.05) 82%,
+      rgba(244, 242, 240, 0.14) 94%,
+      rgba(244, 242, 240, 0.24) 100%
     );
   z-index: 2;
   pointer-events: none;
@@ -244,9 +248,26 @@ main {
   background-image: url("assets/hero-sky.webp");
   background-size: cover;
   background-position: center 25%;
-  opacity: 0.28;
-  filter: blur(18px) brightness(1.06) saturate(1.08) contrast(1);
-  transform: scale(1.08);
+  /* Always-visible base image (ripples canvas can wash out on some GPUs). */
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+/* When ripples run, this sits above the canvas — keep it very light or the photo disappears */
+.hero--ripples-on .hero__background::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 58%,
+    rgba(244, 242, 240, 0.12) 88%,
+    rgba(244, 242, 240, 0.22) 100%
+  );
+}
+
+/* Ripples canvas: let the real photo show through */
+.hero__ripple-layer canvas {
+  opacity: 0.88;
 }
 
 /* Let pointer events reach the ripple layer (hero copy has no links) */
@@ -667,12 +688,35 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   pointer-events: none;
   /* Size from width so “About” spans the screen; vh caps huge glyphs on short viewports (vmin was capping wide layouts) */
   font-size: clamp(10rem, min(38vw, 88vh), 108rem);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.058em;
   line-height: 0.82;
   color: rgba(0, 0, 0, 0.022);
+  /* Watermark — keep the photo fill from dominating */
+  opacity: 0.24;
   white-space: nowrap;
   user-select: none;
+}
+
+/* Same photo as .hero__ripple-layer — image clipped to the “About” letterforms */
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .section--about .about-bg-word {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    /* Tint toward page bg so it reads softer than raw photo */
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(244, 242, 240, 0.72) 0%,
+        rgba(244, 242, 240, 0.52) 100%
+      ),
+      url("assets/hero-sky.webp");
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 }
 
 /* Browsers without small-viewport units: classic 100vw breakout */
@@ -718,7 +762,7 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     text-align: center;
     white-space: nowrap;
     /* Match desktop watermark (inherits body / system stack) */
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.058em;
     line-height: 0.82;
     /* Same vertical logic as desktop: centroid of .about-paragraphs; centre with −50% / −50% then rotate */
@@ -895,7 +939,7 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   }
 
   .hero::after {
-    height: min(280px, 36vh);
+    height: min(300px, 42vh);
   }
 }
 
@@ -1379,13 +1423,41 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  /* Keep legacy hook, but don't paint anything here (we render via .about-hero__background). */
+}
+
+.about-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.about-hero__background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-image: url("assets/hero-sky.webp");
   background-size: cover;
   /* Different crop vs home (home is center 25%) */
   background-position: 70% 32%;
-  opacity: 0.72;
-  filter: blur(10px) brightness(1.08) saturate(1.05);
-  transform: scaleX(-1) scale(1.06);
+  opacity: 1;
+  filter: none;
+  transform: scaleX(-1);
+}
+
+.about-hero__ripple-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.about-hero__ripple-layer canvas {
+  opacity: 0.88;
 }
 
 .about-page .about-hero::after {
@@ -1404,6 +1476,21 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
       rgba(244, 242, 240, 0.22) 70%,
       rgba(244, 242, 240, 0.64) 88%,
       rgba(244, 242, 240, 1) 96%,
+      var(--page-bg) 100%
+    );
+}
+
+/* When ripples run on About, keep the wash light so the photo stays visible */
+.about-page .about-hero.hero--ripples-on::after {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(248, 208, 210, 0.10), transparent 58%),
+    radial-gradient(circle at 78% 14%, rgba(212, 224, 246, 0.08), transparent 55%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04), rgba(244, 242, 240, 0.14)),
+    linear-gradient(
+      to bottom,
+      rgba(244, 242, 240, 0) 44%,
+      rgba(244, 242, 240, 0.10) 78%,
+      rgba(244, 242, 240, 0.24) 92%,
       var(--page-bg) 100%
     );
 }
@@ -2198,6 +2285,212 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 .case-study-more__body {
   padding-top: 1.75rem;
+}
+
+/* Karnaluks — “More about the process”: calm scan, 3 themes + prototype */
+.case-study-process-refined {
+  max-width: min(100%, 72rem);
+}
+
+.case-study-process-refined__bridge {
+  margin: 0 0 clamp(2.5rem, 4vw, 3.5rem);
+  max-width: 65ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.case-study-process-refined__block + .case-study-process-refined__block {
+  margin-top: clamp(5rem, 9vw, 7.5rem);
+}
+
+.case-study-process-refined__title {
+  margin: 0 0 1.15rem;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.case-study-process-refined__title--proto {
+  margin-bottom: 1rem;
+}
+
+.case-study-process-refined__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 65ch;
+  color: rgba(0, 0, 0, 0.76);
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.case-study-process-refined__list li {
+  position: relative;
+  margin: 0 0 0.65rem;
+  padding-left: 1.15rem;
+}
+
+.case-study-process-refined__list li:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-process-refined__list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.case-study-process-refined__block--learned {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4.5vw, 52px);
+  align-items: start;
+}
+
+.case-study-process-refined__learned-copy {
+  min-width: 0;
+  max-width: 65ch;
+}
+
+.case-study-process-refined__figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.case-study-process-refined__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center 85%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.case-study-process-refined__caption {
+  margin: 0.85rem 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.52);
+  font-style: normal;
+  max-width: 36ch;
+}
+
+.case-study-process-refined__block--prototype {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.35fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+  padding-block: clamp(5rem, 9vw, 7.5rem);
+}
+
+.case-study-process-refined__prototype-copy {
+  min-width: 0;
+  max-width: 38ch;
+  padding-top: 0.15rem;
+}
+
+.case-study-process-refined__figure--mockup {
+  justify-self: end;
+  width: 100%;
+  max-width: 100%;
+}
+
+.case-study-process-refined__mockup-frame {
+  --process-refined-max-h: min(85vh, 860px);
+  width: 100%;
+  max-width: min(100%, calc(var(--process-refined-max-h) * 1438 / 1362));
+  margin-inline: auto 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.55);
+  box-sizing: border-box;
+}
+
+.case-study-process-refined__mockup-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: var(--process-refined-max-h);
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: top center;
+}
+
+/* Minimal tabs (quiet text, no button UI) */
+.process-tabs--minimal {
+  margin-top: 0;
+}
+
+.process-tabs--minimal .process-tabs__list {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+}
+
+.process-tabs--minimal .process-tabs__tab {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.52);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.process-tabs--minimal .process-tabs__tab:hover {
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.process-tabs--minimal .process-tabs__tab[aria-selected="true"] {
+  color: rgba(0, 0, 0, 0.82);
+  text-decoration: underline;
+}
+
+.process-tabs--minimal .process-tabs__tab:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.28);
+  outline-offset: 4px;
+}
+
+.process-tabs--minimal .process-tabs__panel {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .case-study-process-refined__block--learned,
+  .case-study-process-refined__block--prototype {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-process-refined__figure--mockup {
+    justify-self: stretch;
+  }
+
+  .case-study-process-refined__mockup-frame {
+    --process-refined-max-h: min(72vh, 560px);
+    margin-inline: 0;
+    max-width: 100%;
+  }
+
+  .case-study-process-refined__block--prototype {
+    padding-block: clamp(4rem, 10vw, 6rem);
+  }
 }
 
 /* Karnaluks — expandable process: airy blocks, 2-col + cards + tabs */
