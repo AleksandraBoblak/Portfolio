@@ -2341,6 +2341,36 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   padding-top: 1.75rem;
 }
 
+.case-study-more__back {
+  margin: 1.25rem 0 0;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.case-study-more__back-link {
+  color: var(--editorial-eyebrow, rgb(143, 122, 94));
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.case-study-more__back-link:hover,
+.case-study-more__back-link:focus-visible {
+  color: rgba(0, 0, 0, 0.7);
+  opacity: 0.85;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.case-study-more__back-link:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* Karnaluks — “More about the process”: calm scan, 3 themes + prototype */
 .case-study-process-refined {
   max-width: min(100%, 72rem);
