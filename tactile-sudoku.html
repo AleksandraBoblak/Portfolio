@@ -89,36 +89,27 @@
 
               <div class="tactile-sudoku-editorial__rule tactile-sudoku-editorial__rule--spaced" aria-hidden="true"></div>
 
-              <div class="about-columns tactile-sudoku-editorial__columns">
-                <div class="about-column">
-                  <p class="section__eyebrow">Tactile intent</p>
-                  <p class="section__body-copy">
-                    A physical 6×6 Sudoku board designed so players with low vision 
-                    can enjoy the game independently.
-                  </p>
-                  <p class="section__body-copy">
-                    The board is designed around touch. Instead of numbers, it uses 6 distinct shapes, 
-                    each with its own texture, making them easy to recognize by touch. 
-                    Textured navigation buttons make it easy to explore the grid and track where you are on the board.
-                  </p>
-                  <p class="section__body-copy">Unlike paper adaptations of tactile Sudoku, this board provides feedback through vibration and optional sound.
-                    Vibration confirms placements and flags issues; sound gives an additional clue for solving the puzzle.
-                  </p>
-                  <p class="section__body-copy">
-                    The result is a tactile, replayable interactive Sudoku experience that allows for independent play.
-                  </p>
-                </div>
-                <div class="about-column tactile-sudoku-editorial__column-visual">
-                  <img
-                    class="tactile-sudoku-editorial__column-img"
-                    src="assets/sudokuHands.webp"
-                    alt="Hands interacting with a tactile Sudoku board"
-                    width="2048"
-                    height="3641"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+              <figure class="tactile-sudoku-editorial__main-visual">
+                <img
+                  src="assets/sudokuHands.webp"
+                  alt="Hands interacting with a tactile Sudoku board"
+                  width="2048"
+                  height="3641"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+
+              <div class="tactile-sudoku-editorial__intent">
+                <p class="section__eyebrow">Tactile intent</p>
+                <p class="section__body-copy">
+                  A physical 6×6 board players with low vision can enjoy on their own.
+                </p>
+                <p class="section__body-copy">
+                  Six shapes, each with its own texture, replace numbers. Textured
+                  navigation buttons help track position on the grid. Vibration confirms
+                  placements and flags issues; optional sound gives an extra solving clue.
+                </p>
               </div>
 
               <div class="tactile-sudoku-editorial__rule tactile-sudoku-editorial__rule--spaced" aria-hidden="true"></div>
@@ -141,19 +132,29 @@
                     aria-labelledby="tactile-process-prototyping-title"
                   >
                     <div class="case-study-editorial__text">
-                      <span class="case-study-editorial__num" aria-hidden="true">01</span>
-                      <h3 class="case-study-editorial__title" id="tactile-process-prototyping-title">
-                        Prototyping
-                      </h3>
-                      <p class="case-study-editorial__body">
-                        Clay on a gridded board — fast iteration before PCB and sensing.
+                      <header class="case-study-editorial__heading">
+                        <span class="case-study-editorial__num" aria-hidden="true">01</span>
+                        <h3 class="case-study-editorial__title" id="tactile-process-prototyping-title">
+                          Prototyping
+                        </h3>
+                      </header>
+                      <p class="case-study-editorial__lede">
+                        Fast iteration before PCB and sensing.
                       </p>
                       <p class="case-study-editorial__body">
-                        Air-dry clay and a simple grid tested whether six distinguishable pieces
-                        and clear cell edges were enough to play before locking in fabrication.
-                        Side-button layouts went through several texture and size passes — shape
-                        alone isn’t always enough when hands are already mapping space.
+                        Air-dry clay + a simple grid to test:
                       </p>
+                      <ul class="about-list">
+                        <li>whether six shapes were distinguishable</li>
+                        <li>whether the layout felt playable by touch</li>
+                      </ul>
+                      <p class="case-study-editorial__body">
+                        The pawns evolved through multiple passes:
+                      </p>
+                      <ul class="about-list">
+                        <li>texture mattered as much as shape</li>
+                        <li>size affected how quickly pieces could be recognized</li>
+                      </ul>
                     </div>
                     <figure class="case-study-editorial__figure">
                       <img
@@ -184,13 +185,17 @@
                       />
                     </figure>
                     <div class="case-study-editorial__text">
-                      <span class="case-study-editorial__num" aria-hidden="true">02</span>
-                      <h3 class="case-study-editorial__title" id="tactile-process-simulator-title">
-                        Online simulation
-                      </h3>
+                      <header class="case-study-editorial__heading">
+                        <span class="case-study-editorial__num" aria-hidden="true">02</span>
+                        <h3 class="case-study-editorial__title" id="tactile-process-simulator-title">
+                          Online simulation
+                        </h3>
+                      </header>
+                      <p class="case-study-editorial__lede">
+                        A lightweight browser simulation to check rules and feedback away from hardware.
+                      </p>
                       <p class="case-study-editorial__body">
-                        A lightweight online simulation helped check rules and feedback logic away
-                        from the hardware while the physical prototype evolved.
+                        Ran alongside the physical prototype so logic could evolve without waiting on the board.
                       </p>
                       <p class="case-study-editorial__link">
                         <a
@@ -208,21 +213,20 @@
                     aria-labelledby="tactile-process-fabrication-title"
                   >
                     <div class="case-study-editorial__text">
-                      <span class="case-study-editorial__num" aria-hidden="true">03</span>
-                      <h3 class="case-study-editorial__title" id="tactile-process-fabrication-title">
-                        Fabrication
-                      </h3>
-                      <p class="case-study-editorial__body">
-                        Copper-clad fibreglass field — traces, contacts, and magnets in mind.
+                      <header class="case-study-editorial__heading">
+                        <span class="case-study-editorial__num" aria-hidden="true">03</span>
+                        <h3 class="case-study-editorial__title" id="tactile-process-fabrication-title">
+                          Fabrication
+                        </h3>
+                      </header>
+                      <p class="case-study-editorial__lede">
+                        A copper-clad fibreglass field — traces, contacts, and magnets in mind.
                       </p>
                       <p class="case-study-editorial__body">
-                        The playing surface is a soldered copper board: conductive paths and
-                        contacts where pawns meet the grid. Magnets in the pieces pair with
-                        embedded hardware so pieces seat firmly and stay easy to explore by hand.
+                        Soldered copper paths meet the pawns at each cell; magnets seat pieces firmly.
                       </p>
                       <p class="case-study-editorial__body">
-                        Bench work — prep, soldering, sanding — closed the gap between layout drawings
-                        and what the sensing layer actually needed.
+                        Bench work — prep, soldering, sanding — closed the gap between layout and sensing.
                       </p>
                     </div>
                     <figure class="case-study-editorial__figure">
@@ -254,31 +258,19 @@
                       />
                     </figure>
                     <div class="case-study-editorial__text">
-                      <span class="case-study-editorial__num" aria-hidden="true">04</span>
-                      <h3 class="case-study-editorial__title" id="tactile-process-electronics-title">
-                        Electronics
-                      </h3>
-                      <p class="case-study-editorial__body">
-                        Resistor in each pawn → firmware maps reads to six “digits.”
-                      </p>
-                      <p class="case-study-editorial__body">
-                        Each pawn carries a resistor with a unique value; contact with the copper
-                        field lets the firmware tell which shape sits in a cell — no camera, no
-                        RFID — so the board can track the puzzle state for checks and feedback.
+                      <header class="case-study-editorial__heading">
+                        <span class="case-study-editorial__num" aria-hidden="true">04</span>
+                        <h3 class="case-study-editorial__title" id="tactile-process-electronics-title">
+                          Electronics
+                        </h3>
+                      </header>
+                      <p class="case-study-editorial__lede">
+                        A resistor in each pawn; firmware reads them as six distinct “digits.”
                       </p>
                       <ul class="about-list">
-                        <li>
-                          Calibrate ranges so adjacent values don’t bleed together at the edge of
-                          tolerance.
-                        </li>
-                        <li>
-                          Tame electrical bleed between rows and columns — signal isolation is the
-                          main hardware fight on a dense grid.
-                        </li>
-                        <li>
-                          Stress-test placement, lift, and re-seat so reads stay trustworthy in
-                          real play.
-                        </li>
+                        <li>Calibrate ranges so adjacent values don’t bleed together.</li>
+                        <li>Tame electrical bleed between rows and columns.</li>
+                        <li>Stress-test placement, lift, and re-seat for trustworthy reads.</li>
                       </ul>
                     </div>
                   </article>

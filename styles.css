@@ -23,6 +23,10 @@ body {
   --editorial-sheet-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 24px 48px rgba(0, 0, 0, 0.05);
   --editorial-rule: rgba(0, 0, 0, 0.1);
   --editorial-eyebrow: rgb(143, 122, 94);
+  /* Call-to-action color for prototype / simulator / diary links on case studies.
+     Muted teal — cool counterpoint to the warm editorial tan, same saturation. */
+  --editorial-action: #2f6a6e;
+  --editorial-action-hover: #1f5155;
 }
 
 /* Full-screen section snapping */
@@ -539,13 +543,14 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   color: var(--editorial-accent);
 }
 
-/* Over image, aligned with experiments-mag__index scale + overlap */
+/* Over image, aligned like experiments page — number sits a bit outside
+   the upper-left corner, most of it above the image edge. */
 .section--experiments-editorial .card__media--cover .card__index {
   position: absolute;
   z-index: 2;
-  left: clamp(14px, 2.4vw, 26px);
-  top: clamp(-6px, -0.3vw, 4px);
-  transform: translate(-5%, -38%);
+  left: clamp(-34px, -2.4vw, -20px);
+  top: clamp(-32px, -2.4vw, -16px);
+  transform: none;
   font-size: clamp(2.5rem, 6.2vw, 4.85rem);
   font-weight: 600;
   letter-spacing: -0.04em;
@@ -553,6 +558,8 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   color: var(--editorial-accent);
   font-variant-numeric: tabular-nums;
   pointer-events: none;
+  -webkit-text-stroke: 1.5px var(--page-bg);
+  paint-order: stroke fill;
 }
 
 .section--experiments-editorial .card.card--link {
@@ -651,6 +658,24 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 .section--about .about-connect {
   margin-top: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+/* On the snap-scrolled Home "about" panel, push "Let's connect" to the
+   bottom of the viewport by letting the stack fill the available height. */
+@media (min-width: 700px) {
+  .snap-container .section--about .section__inner--about {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .snap-container .section--about .about-stack {
+    flex: 1;
+  }
+
+  .snap-container .section--about .about-connect {
+    margin-top: auto;
+  }
 }
 
 @media (min-width: 700px) {
@@ -761,6 +786,20 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     min-height: calc(100svh - var(--header-h) - 3rem);
     padding-left: 0;
     padding-top: 0;
+  }
+
+  /* Pull "About me →" close to the copy on mobile (desktop keeps the
+     large negative-margin compensation tied to the 5rem stack gap). */
+  .section--about .about-stack {
+    gap: 1.5rem;
+  }
+
+  .section--about .about-bg-anchor {
+    justify-content: flex-end;
+  }
+
+  .section--about .about-bg-anchor + .about-cta {
+    margin-top: 0;
   }
 
   .section--about .about-bg-anchor .about-content {
@@ -1493,6 +1532,10 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   opacity: 0.88;
 }
 
+.about-page .about-hero.hero--ripples-on > .section__inner {
+  pointer-events: none;
+}
+
 .about-page .about-hero::after {
   content: "";
   position: absolute;
@@ -1598,6 +1641,19 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   font-size: clamp(14px, 1.7vw, 16px);
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.8);
+}
+
+/* Softer hero text on the About page — calmer, less stark */
+.about-hero .about-title {
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.about-hero .about-lead {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.about-hero .about-lead.about-lead--rest {
+  color: rgba(0, 0, 0, 0.66);
 }
 
 .about-columns {
@@ -1986,6 +2042,10 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   transition: color 0.15s ease, opacity 0.15s ease;
 }
 
+.case-study-experiment-folio__label--short {
+  display: none;
+}
+
 .case-study-experiment-folio__link:hover,
 .case-study-experiment-folio__link:focus-visible {
   opacity: 0.7;
@@ -2057,16 +2117,30 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   display: inline-block;
   font-size: 15px;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.88);
+  color: var(--editorial-action);
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
-  text-decoration-color: rgba(0, 0, 0, 0.45);
+  text-decoration-color: rgba(47, 106, 110, 0.5);
   text-underline-offset: 4px;
 }
 
 .case-study-compare__proto-link:hover {
-  color: #000;
-  text-decoration-color: rgba(0, 0, 0, 0.65);
+  color: var(--editorial-action-hover);
+  text-decoration-color: rgba(31, 81, 85, 0.85);
+}
+
+/* Prototype / simulator / diary links inside editorial entries
+   (tactile-sudoku simulator, Karnaluks Inspiration Diary, etc.) */
+.case-study-page .case-study-editorial__link .link {
+  color: var(--editorial-action);
+  text-decoration-color: rgba(47, 106, 110, 0.5);
+  font-weight: 500;
+}
+
+.case-study-page .case-study-editorial__link .link:hover,
+.case-study-page .case-study-editorial__link .link:focus-visible {
+  color: var(--editorial-action-hover);
+  text-decoration-color: rgba(31, 81, 85, 0.85);
 }
 
 .case-study-compare__viewport-shell {
@@ -2676,22 +2750,23 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     align-items: start;
   }
   .tactile-sudoku-page .case-study-editorial__entry--a > .case-study-editorial__text {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 6;
     padding-top: clamp(20px, 3vw, 40px);
+    max-width: 46ch;
   }
   .tactile-sudoku-page .case-study-editorial__entry--a > .case-study-editorial__figure {
-    grid-column: 6 / span 7;
+    grid-column: 8 / span 5;
   }
 
   .tactile-sudoku-page .case-study-editorial__entry--b {
-    align-items: end;
+    align-items: start;
   }
   .tactile-sudoku-page .case-study-editorial__entry--b > .case-study-editorial__figure {
-    grid-column: 1 / span 7;
+    grid-column: 1 / span 6;
   }
   .tactile-sudoku-page .case-study-editorial__entry--b > .case-study-editorial__text {
-    grid-column: 9 / span 4;
-    padding-bottom: clamp(20px, 3vw, 40px);
+    grid-column: 7 / span 6;
+    padding-top: clamp(20px, 3vw, 40px);
   }
 
   .tactile-sudoku-page .case-study-editorial__entry--c {
@@ -2719,13 +2794,12 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 .case-study-editorial__num {
   display: block;
   margin: 0 0 0.4em;
-  font-size: clamp(52px, 6.5vw, 78px);
-  font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.01em;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 0.78;
+  letter-spacing: -0.04em;
   color: var(--editorial-accent);
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum" 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .case-study-editorial__title {
@@ -2814,7 +2888,7 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   }
 
   .case-study-editorial__num {
-    font-size: clamp(48px, 13vw, 68px);
+    font-size: clamp(32px, 9vw, 46px);
   }
 }
 
@@ -3997,6 +4071,87 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   gap: clamp(32px, 5vw, 56px);
 }
 
+/* Tactile Sudoku — process entries: big block numerals above titles
+   (matching the other case studies), tighter text column, consistent
+   inter-entry gap. */
+.tactile-sudoku-page .case-study-editorial {
+  gap: clamp(3rem, 5.5vw, 4.5rem);
+}
+
+.tactile-sudoku-page .case-study-editorial__text {
+  max-width: 38ch;
+}
+
+/* Shared: section heading wrapper places the big numeral inline with the
+   title on one baseline-aligned row. Applied anywhere the
+   `<header class="case-study-editorial__heading">` wrapper is used. */
+.case-study-editorial__heading {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin: 0 0 0.9rem;
+}
+
+.case-study-editorial__heading > .case-study-editorial__num,
+.case-study-editorial__heading > .case-study-editorial__title {
+  margin: 0;
+}
+
+.tactile-sudoku-page .case-study-editorial__lede {
+  margin: 0 0 0.75rem;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.82);
+  max-width: 42ch;
+}
+
+.tactile-sudoku-page .case-study-editorial__body + .case-study-editorial__body {
+  margin-top: 0.65rem;
+}
+
+/* Match list typography to the editorial body so the column reads as one voice. */
+.tactile-sudoku-page .case-study-editorial__text .about-list {
+  margin: 0.35rem 0 0;
+  color: rgba(0, 0, 0, 0.74);
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.tactile-sudoku-page .case-study-editorial__text .about-list li {
+  margin: 0 0 0.35rem;
+  line-height: 1.62;
+}
+
+.tactile-sudoku-page .case-study-editorial__text .about-list li:last-child {
+  margin-bottom: 0;
+}
+
+.tactile-sudoku-page .case-study-editorial__text .about-list + .case-study-editorial__body {
+  margin-top: 0.9rem;
+}
+
+.tactile-sudoku-page .case-study-editorial__figure {
+  max-width: 460px;
+  margin-inline: 0;
+}
+
+.tactile-sudoku-page .case-study-editorial__img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .tactile-sudoku-page .case-study-editorial__text {
+    max-width: 100%;
+  }
+
+  .tactile-sudoku-page .case-study-editorial__figure {
+    max-width: 100%;
+  }
+}
+
 .tactile-sudoku-editorial__columns {
   gap: clamp(32px, 5vw, 56px);
 }
@@ -4016,6 +4171,34 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   height: 100%;
   object-fit: cover;
   object-position: center 36%;
+}
+
+/* Main project image — sits under GOAL, generous height, centered within the sheet */
+.tactile-sudoku-editorial__main-visual {
+  margin: clamp(28px, 4vw, 44px) auto clamp(36px, 5vw, 56px);
+  width: 100%;
+  height: min(58vh, 560px);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tactile-sudoku-editorial__main-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+}
+
+/* Tactile intent — single column spanning the full sheet width */
+.tactile-sudoku-editorial__intent {
+  width: 100%;
+  max-width: none;
+}
+
+.tactile-sudoku-editorial__intent .section__body-copy + .section__body-copy {
+  margin-top: 0.75rem;
 }
 
 .tactile-sudoku-page .tactile-sudoku-editorial__sheet .case-study-key-idea {
@@ -4045,6 +4228,341 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   .tactile-sudoku-editorial__column-visual {
     height: min(44vh, 320px);
     margin-inline: auto;
+  }
+
+  .tactile-sudoku-editorial__main-visual {
+    height: min(46vh, 360px);
+  }
+}
+
+/* Mobile: larger type on Home and About for readability on small screens */
+@media (max-width: 767px) {
+  /* Home — hero */
+  .hero__headline {
+    font-size: clamp(38px, 8.5vw, 46px);
+    line-height: 1.15;
+  }
+
+  .hero__subheadline {
+    font-size: clamp(24px, 5.5vw, 28px);
+    line-height: 1.4;
+  }
+
+  /* Home — experiments + about sections (shared section classes,
+     but we scope to the home snap container so case-study/experiments
+     pages are unaffected). */
+  .snap-container .section__eyebrow,
+  .about-page:not(.case-study-page):not(.experiments-page) .section__eyebrow {
+    font-size: 15px;
+  }
+
+  .snap-container .section__subtitle {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .snap-container .section__body-copy,
+  .about-page:not(.case-study-page):not(.experiments-page) .section__body-copy {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .snap-container .card__title {
+    font-size: 19px;
+  }
+
+  .snap-container .card__description {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .snap-container .about-cta,
+  .snap-container .about-cta .link {
+    font-size: 15px;
+  }
+
+  .snap-container .footer-link,
+  .about-page:not(.case-study-page):not(.experiments-page) .footer-link {
+    font-size: 15px;
+  }
+
+  /* About page */
+  .about-page:not(.case-study-page):not(.experiments-page) .about-title {
+    font-size: clamp(40px, 10vw, 52px);
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-lead {
+    font-size: clamp(22px, 5.2vw, 26px);
+    line-height: 1.5;
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-lead.about-lead--rest {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-list {
+    font-size: 16px;
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-list li {
+    line-height: 1.55;
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-experiments-list__title {
+    font-size: 17px;
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-experiments-list__lead {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .about-page:not(.case-study-page):not(.experiments-page) .about-experiments-list__insight {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+/* ============================================================
+   Experiments cards — "ticket" overlay style.
+   Image sits at the top of the card with a clean aspect ratio;
+   a white copy panel overlaps the bottom of the image and
+   extends down into the space beneath it. Index numerals peek
+   above/outside the image's top-left corner.
+   Applied on: home experiments grid + Experiments page rows.
+   ============================================================ */
+
+/* Home — section--experiments-editorial cards */
+.section--experiments-editorial .cards {
+  gap: clamp(40px, 4vw, 64px);
+}
+
+.section--experiments-editorial .card.card--link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: auto;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  padding-inline: clamp(12px, 1.6vw, 24px);
+}
+
+.section--experiments-editorial .card.card--link .card__media--cover {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  padding-top: 0;
+  overflow: visible;
+}
+
+.section--experiments-editorial .card.card--link .card__media--cover .card__media-img {
+  border-radius: 4px;
+}
+
+.section--experiments-editorial .card.card--link .card__body {
+  position: static;
+  transform: none;
+  width: auto;
+  padding: 14px 4px 0;
+  background: var(--page-bg);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Experiments page — one image per row, ticket-style copy panel below */
+.about-page.experiments-page .experiments-spread .experiments-item + .experiments-item {
+  margin-top: clamp(56px, 8vw, 112px);
+}
+
+.about-page.experiments-page .experiments-item__sheet.experiments-mag {
+  position: relative;
+  padding: 0 clamp(14px, 3vw, 48px);
+  height: auto;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.about-page.experiments-page .experiments-mag__grid {
+  display: block;
+  position: static;
+  grid-template-columns: none;
+  gap: 0;
+}
+
+.about-page.experiments-page .experiments-mag__visual {
+  position: static;
+  display: block;
+  width: 100%;
+}
+
+.about-page.experiments-page .experiments-mag__frame {
+  width: 100%;
+  height: auto;
+}
+
+.about-page.experiments-page .experiments-mag__crop--landscape-compact {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
+  max-height: none;
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* Reset the per-item "contain" rule so Karnaluks + Reno also cover the
+   full crop when using the ticket layout. */
+.about-page.experiments-page #exp-karnaluks .experiments-mag__crop img,
+.about-page.experiments-page #exp-reno .experiments-mag__crop img {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.about-page.experiments-page .experiments-item__content.experiments-mag__copy {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 3;
+  width: calc(100% - clamp(80px, 14vw, 220px));
+  max-width: 44rem;
+  padding: clamp(20px, 2.2vw, 28px) clamp(22px, 2.5vw, 34px);
+  background: #ececec;
+  border-radius: 2px 2px 0 0;
+  box-shadow: none;
+  transition: background-color 0.22s ease;
+}
+
+/* Image + ticket react to hover (or keyboard focus) together:
+   any hover/focus inside the sheet brightens both. */
+.about-page.experiments-page .experiments-item__sheet.experiments-mag:hover
+  .experiments-item__content.experiments-mag__copy,
+.about-page.experiments-page
+  .experiments-item__sheet.experiments-mag:focus-within
+  .experiments-item__content.experiments-mag__copy {
+  background: var(--editorial-sheet-bg);
+}
+
+.about-page.experiments-page .experiments-item__sheet.experiments-mag:hover
+  .experiments-mag__crop--landscape-compact img,
+.about-page.experiments-page
+  .experiments-item__sheet.experiments-mag:focus-within
+  .experiments-mag__crop--landscape-compact img {
+  filter: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page.experiments-page .experiments-item__content.experiments-mag__copy {
+    transition: none;
+  }
+}
+
+/* Numeral peeks a bit above/outside the image, like the home cards */
+.about-page.experiments-page .experiments-item__sheet.experiments-mag .experiments-mag__index {
+  left: clamp(-4px, 0.4vw, 10px);
+  top: clamp(-14px, -0.6vw, -2px);
+  transform: translate(-18%, -38%);
+  z-index: 4;
+}
+
+@media (max-width: 720px) {
+  .section--experiments-editorial .cards {
+    gap: clamp(36px, 8vw, 56px);
+  }
+
+  .section--experiments-editorial .card.card--link {
+    padding-inline: clamp(8px, 2vw, 18px);
+  }
+
+  .section--experiments-editorial .card.card--link .card__body {
+    padding: 14px 4px 0;
+  }
+
+  .section--experiments-editorial .card__media--cover .card__index {
+    font-size: clamp(4.25rem, 16vw, 6.5rem);
+    left: clamp(-6px, -1vw, 4px);
+    top: clamp(-18px, -2.5vw, -6px);
+    transform: translate(-10%, -30%);
+    -webkit-text-stroke: 2px var(--page-bg);
+  }
+
+  /* Mobile: mirror the home experiments card layout on the Experiments page —
+     image on top, text block below (no overlay), with oversized corner numerals. */
+  .about-page.experiments-page {
+    --page-bg: #ffffff;
+  }
+
+  .about-page.experiments-page .experiments-spread {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .about-page.experiments-page .experiments-item__sheet.experiments-mag {
+    padding: 0 clamp(8px, 2vw, 18px);
+  }
+
+  .about-page.experiments-page .experiments-mag__crop--landscape-compact {
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+  }
+
+  .about-page.experiments-page .experiments-item__content.experiments-mag__copy {
+    position: static;
+    transform: none;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    max-width: none;
+    padding: 14px 4px 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  .about-page.experiments-page
+    .experiments-item__sheet.experiments-mag
+    .experiments-mag__index {
+    font-size: clamp(4.25rem, 16vw, 6.5rem);
+    left: clamp(-6px, -1vw, 4px);
+    top: clamp(-18px, -2.5vw, -6px);
+    transform: translate(-10%, -30%);
+    -webkit-text-stroke: 2px var(--page-bg);
+  }
+
+  /* Mobile: remove the grey gap below the case-study white sheet so the
+     footer sits flush with the bottom of the page. Hero (intro panel)
+     keeps its page-bg styling untouched. */
+  .about-page.case-study-page .case-study-sheet-stack {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* Same treatment for the Tactile Sudoku page, which uses its own sheet
+     wrapper instead of .case-study-sheet-stack. */
+  .about-page.tactile-sudoku-page .tactile-sudoku-editorial__body-section {
+    padding-bottom: 0;
+  }
+
+  .about-page.tactile-sudoku-page .tactile-sudoku-editorial__sheet {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* Karnaluks footer: swap the long "Renovation tracker" label for a
+     shorter one so the link fits on one line. */
+  .case-study-experiment-folio__label--full {
+    display: none;
+  }
+
+  .case-study-experiment-folio__label--short {
+    display: inline;
   }
 }
 
