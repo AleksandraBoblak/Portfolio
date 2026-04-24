@@ -662,20 +662,18 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 /* On the snap-scrolled Home "about" panel, push "Let's connect" to the
    bottom of the viewport by letting the stack fill the available height. */
-@media (min-width: 700px) {
-  .snap-container .section--about .section__inner--about {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+.snap-container .section--about .section__inner--about {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
-  .snap-container .section--about .about-stack {
-    flex: 1;
-  }
+.snap-container .section--about .about-stack {
+  flex: 1;
+}
 
-  .snap-container .section--about .about-connect {
-    margin-top: auto;
-  }
+.snap-container .section--about .about-connect {
+  margin-top: auto;
 }
 
 @media (min-width: 700px) {
@@ -718,6 +716,14 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   overflow: visible;
 }
 
+/* Wraps watermark + copy so the giant “about” is positioned to the vertical
+   midpoint of the copy block (pair height = .about-content height), not the
+   whole .about-bg-anchor. */
+.section--about .about-bg-pair {
+  position: relative;
+  width: 100%;
+}
+
 .section--about .about-bg-word {
   position: absolute;
   z-index: 0;
@@ -725,8 +731,8 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   /* Break out of .section__inner so the watermark spans the full visible viewport */
   left: calc(50% - 50svw);
   width: 100svw;
-  /* Vert. center of “About” = center of .about-paragraphs: offset by ½ (eyebrow line + its bottom margin) */
-  top: calc(50% + (clamp(12px, 1.05vw, 13px) * 0.6 + 5px));
+  /* Halfway point of .about-content: pair is the positioned ancestor (height = copy) */
+  top: 50%;
   transform: translateY(-50%);
   text-align: center;
   pointer-events: none;
@@ -777,13 +783,25 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     padding-top: clamp(1.75rem, 5vw, 2.5rem);
   }
 
+  /* Home: about snap — content from the top; panel height follows content so
+     there’s no dead band above the tab bar. */
+  .snap-container .section--about.snap-section {
+    justify-content: flex-start;
+    min-height: 0;
+    min-height: auto;
+  }
+
+  .snap-container .section--about {
+    /* Extra air after the last experiment card before “A little about me” */
+    padding-top: clamp(3.25rem, 10vw, 5rem);
+    /* A little space below the links before the bottom tab bar */
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  /* No full-viewport min-height: a tall .about-bg-anchor + flex-end was leaving a
+     large empty band above the copy, far below the last experiment card. */
   .section--about .about-bg-anchor {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    min-height: calc(100vh - var(--header-h) - 3rem);
-    min-height: calc(100svh - var(--header-h) - 3rem);
+    display: block;
     padding-left: 0;
     padding-top: 0;
   }
@@ -794,12 +812,19 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     gap: 1.5rem;
   }
 
-  .section--about .about-bg-anchor {
-    justify-content: flex-end;
+  /* Home: tighter space under the intro copy than under the “About me →” link */
+  .snap-container .section--about .about-stack {
+    gap: 0.75rem;
   }
 
   .section--about .about-bg-anchor + .about-cta {
     margin-top: 0;
+  }
+
+  /* Home: don’t push “Let’s connect” to the bottom of the snap panel — that
+     leaves a huge gap under “About me →”. Keep it tight to the CTA. */
+  .snap-container .section--about .about-connect {
+    margin-top: 2rem;
   }
 
   .section--about .about-bg-anchor .about-content {
@@ -810,7 +835,7 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   }
 
   .section--about .about-bg-word {
-    top: calc(50% + (clamp(12px, 1.05vw, 13px) * 0.6 + 5px));
+    top: 50%;
     left: 85%;
     right: auto;
     bottom: auto;
@@ -4471,8 +4496,12 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 }
 
 @media (max-width: 720px) {
+  .section--experiments-editorial .section__header {
+    margin-bottom: 64px;
+  }
+
   .section--experiments-editorial .cards {
-    gap: clamp(36px, 8vw, 56px);
+    gap: 64px;
   }
 
   .section--experiments-editorial .card.card--link {
@@ -4555,14 +4584,38 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     border-bottom-right-radius: 0;
   }
 
-  /* Karnaluks footer: swap the long "Renovation tracker" label for a
-     shorter one so the link fits on one line. */
+  /* Case-study footers: short mobile labels via .label--full / .label--short
+     (long names stay on desktop). */
   .case-study-experiment-folio__label--full {
     display: none;
   }
 
   .case-study-experiment-folio__label--short {
     display: inline;
+  }
+
+  /* One row: “All experiments” + folio link; short labels + nowrap when needed. */
+  .case-study-experiment-footer {
+    flex-wrap: nowrap;
+    gap: 0.5rem 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .case-study-experiment-footer .case-study-back {
+    flex-shrink: 0;
+  }
+
+  .case-study-experiment-folio {
+    margin-left: 0;
+    min-width: 0;
+  }
+
+  /* Case-study footer nav links: .editorial-folio__num letter-spacing (0.08em)
+     is too wide on narrow phones (e.g. Galaxy S8+). */
+  .about-page.case-study-page .case-study-experiment-folio__link {
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 }
 
