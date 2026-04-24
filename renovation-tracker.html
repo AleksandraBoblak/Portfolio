@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Renovation tracker — Aleksandra Boblak</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      function __resetScrollTop() {
+        if (location.hash) return;
+        window.scrollTo(0, 0);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      }
+      __resetScrollTop();
+      window.addEventListener("DOMContentLoaded", __resetScrollTop);
+      window.addEventListener("load", __resetScrollTop);
+      window.addEventListener("pageshow", __resetScrollTop);
+    </script>
   </head>
   <body class="about-page case-study-page case-study-page--reno-plain">
     <div class="page">
@@ -242,8 +255,10 @@
                           aria-selected="false"
                           aria-controls="reno-strategy-tabpanel"
                           tabindex="-1"
-                          data-reno-src="assets/renovationQuiz.jpg"
-                          data-reno-alt="Journey quiz flow to learn where homeowners are in their renovation."
+                          data-reno-src="assets/quizQuestion1.png"
+                          data-reno-alt="First question of the journey quiz — asking where the homeowner is in the renovation."
+                          data-reno-src-2="assets/quizQuestion2.png"
+                          data-reno-alt-2="Follow-up quiz question that refines the homeowner's current renovation stage."
                           data-reno-caption="Journey quiz — catching up on where the homeowner is in the renovation."
                         >
                           <span class="reno-strategy-step__title"
@@ -306,6 +321,44 @@
                             height="1080"
                             loading="lazy"
                             decoding="async"
+                          />
+                          <span
+                            class="reno-strategy-visual__arrow"
+                            aria-hidden="true"
+                            hidden
+                          >
+                            <svg
+                              viewBox="0 0 40 100"
+                              preserveAspectRatio="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              focusable="false"
+                            >
+                              <path
+                                d="M 2 40 C 16 34, 26 38, 36 46"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                vector-effect="non-scaling-stroke"
+                              />
+                              <path
+                                d="M 36 46 L 30 44 M 36 46 L 34 40"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                vector-effect="non-scaling-stroke"
+                              />
+                            </svg>
+                          </span>
+                          <img
+                            class="reno-strategy-visual__img reno-strategy-visual__img--secondary"
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            hidden
                           />
                           <div class="reno-strategy-visual__placeholder" hidden>
                             Visual for this step — coming soon.

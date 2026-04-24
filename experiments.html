@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Experiments — Aleksandra Boblak</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      function __resetScrollTop() {
+        if (location.hash) return;
+        window.scrollTo(0, 0);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      }
+      __resetScrollTop();
+      window.addEventListener("DOMContentLoaded", __resetScrollTop);
+      window.addEventListener("load", __resetScrollTop);
+      window.addEventListener("pageshow", __resetScrollTop);
+    </script>
   </head>
   <body class="about-page experiments-page">
     <div class="page">

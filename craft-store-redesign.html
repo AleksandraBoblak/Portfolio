@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Karnaluks redesign — Aleksandra Boblak</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      function __resetScrollTop() {
+        if (location.hash) return;
+        window.scrollTo(0, 0);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      }
+      __resetScrollTop();
+      window.addEventListener("DOMContentLoaded", __resetScrollTop);
+      window.addEventListener("load", __resetScrollTop);
+      window.addEventListener("pageshow", __resetScrollTop);
+    </script>
   </head>
   <body class="about-page case-study-page case-study-page--karnaluks">
     <div class="page">

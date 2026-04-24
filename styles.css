@@ -2670,6 +2670,52 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   grid-column: 6 / span 7;
 }
 
+/* Tactile Sudoku — bolder asymmetric variation per entry so layouts don't feel uniform */
+@media (min-width: 901px) {
+  .tactile-sudoku-page .case-study-editorial__entry--a {
+    align-items: start;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--a > .case-study-editorial__text {
+    grid-column: 1 / span 4;
+    padding-top: clamp(20px, 3vw, 40px);
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--a > .case-study-editorial__figure {
+    grid-column: 6 / span 7;
+  }
+
+  .tactile-sudoku-page .case-study-editorial__entry--b {
+    align-items: end;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--b > .case-study-editorial__figure {
+    grid-column: 1 / span 7;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--b > .case-study-editorial__text {
+    grid-column: 9 / span 4;
+    padding-bottom: clamp(20px, 3vw, 40px);
+  }
+
+  .tactile-sudoku-page .case-study-editorial__entry--c {
+    align-items: center;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--c > .case-study-editorial__text {
+    grid-column: 3 / span 4;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--c > .case-study-editorial__figure {
+    grid-column: 8 / span 5;
+  }
+
+  .tactile-sudoku-page .case-study-editorial__entry--d {
+    align-items: start;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--d > .case-study-editorial__figure {
+    grid-column: 1 / span 5;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--d > .case-study-editorial__text {
+    grid-column: 7 / span 6;
+    padding-top: clamp(20px, 3vw, 40px);
+  }
+}
+
 .case-study-editorial__num {
   display: block;
   margin: 0 0 0.4em;
@@ -3607,6 +3653,78 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
 
 .reno-strategy-visual__img[hidden] {
   display: none !important;
+}
+
+.reno-strategy-visual__frame.is-dual {
+  gap: clamp(6px, 1.5vw, 16px);
+  aspect-ratio: auto;
+  max-height: none;
+  align-items: flex-start;
+  overflow: visible;
+}
+
+.reno-strategy-visual__frame.is-dual .reno-strategy-visual__img {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.reno-strategy-visual__frame.is-dual .reno-strategy-visual__img--secondary {
+  flex: 1.1 1 0;
+  margin-top: clamp(40px, 8vw, 110px);
+}
+
+.reno-strategy-visual__frame.is-dual .reno-strategy-visual__arrow {
+  align-self: stretch;
+  width: clamp(32px, 4vw, 56px);
+  transform: none;
+  opacity: 0.55;
+}
+
+.reno-strategy-visual__frame.is-dual .reno-strategy-visual__arrow svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.reno-strategy-visual__arrow {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(28px, 4vw, 44px);
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.reno-strategy-visual__arrow svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.reno-strategy-visual__arrow[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 560px) {
+  .reno-strategy-visual__frame.is-dual {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .reno-strategy-visual__frame.is-dual .reno-strategy-visual__img--secondary {
+    margin-top: 0;
+  }
+  .reno-strategy-visual__frame.is-dual .reno-strategy-visual__arrow {
+    width: clamp(48px, 20vw, 96px);
+    align-self: center;
+    transform: rotate(90deg);
+  }
 }
 
 .reno-strategy-visual__placeholder {

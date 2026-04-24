@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tactile Sudoku — Aleksandra Boblak</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      function __resetScrollTop() {
+        if (location.hash) return;
+        window.scrollTo(0, 0);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      }
+      __resetScrollTop();
+      window.addEventListener("DOMContentLoaded", __resetScrollTop);
+      window.addEventListener("load", __resetScrollTop);
+      window.addEventListener("pageshow", __resetScrollTop);
+    </script>
   </head>
   <body class="about-page case-study-page tactile-sudoku-page">
     <div class="page">
@@ -122,165 +135,153 @@
                 <summary class="case-study-more__summary">
                   More about the process
                 </summary>
-                <div class="case-study-more__body">
-                  <section
-                    class="case-study-process-block tactile-sudoku-process-sub"
+                <div class="case-study-more__body case-study-editorial">
+                  <article
+                    class="case-study-editorial__entry case-study-editorial__entry--a"
                     aria-labelledby="tactile-process-prototyping-title"
                   >
-                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-prototyping-title">
-                      PROTOTYPING
-                    </h3>
-                    <div
-                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-left"
-                    >
-                      <div class="tactile-sudoku-process-sub__figure">
-                        <img
-                          class="tactile-sudoku-process-sub__img"
-                          src="assets/sudokuProto.jpg"
-                          alt="Physical Sudoku prototype with tactile pieces on a gridded board"
-                          width="1107"
-                          height="1280"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                      <div class="tactile-sudoku-process-sub__copy">
-                        <p class="tactile-sudoku-process-sub__lede">
-                          Clay on a gridded board — fast iteration before PCB and sensing.
-                        </p>
-                        <p class="section__body-copy">
-                          Air-dry clay and a simple grid tested whether six distinguishable pieces
-                          and clear cell edges were enough to play before locking in fabrication.
-                          Side-button layouts went through several texture and size passes — shape
-                          alone isn’t always enough when hands are already mapping space.
-                        </p>
-                      </div>
+                    <div class="case-study-editorial__text">
+                      <span class="case-study-editorial__num" aria-hidden="true">01</span>
+                      <h3 class="case-study-editorial__title" id="tactile-process-prototyping-title">
+                        Prototyping
+                      </h3>
+                      <p class="case-study-editorial__body">
+                        Clay on a gridded board — fast iteration before PCB and sensing.
+                      </p>
+                      <p class="case-study-editorial__body">
+                        Air-dry clay and a simple grid tested whether six distinguishable pieces
+                        and clear cell edges were enough to play before locking in fabrication.
+                        Side-button layouts went through several texture and size passes — shape
+                        alone isn’t always enough when hands are already mapping space.
+                      </p>
                     </div>
-                  </section>
+                    <figure class="case-study-editorial__figure">
+                      <img
+                        class="case-study-editorial__img"
+                        src="assets/sudokuProto.jpg"
+                        alt="Physical Sudoku prototype with tactile pieces on a gridded board"
+                        width="1107"
+                        height="1280"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  </article>
 
-                  <section
-                    class="case-study-process-block tactile-sudoku-process-sub"
+                  <article
+                    class="case-study-editorial__entry case-study-editorial__entry--b"
                     aria-labelledby="tactile-process-simulator-title"
                   >
-                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-simulator-title">
-                      ONLINE SIMULATION
-                    </h3>
-                    <div
-                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-right"
-                    >
-                      <div class="tactile-sudoku-process-sub__copy">
-                        <p class="section__body-copy">
-                          A lightweight online simulation helped check rules and feedback logic away
-                          from the hardware while the physical prototype evolved.
-                        </p>
-                        <p class="section__body-copy">
-                          <a
-                            href="https://aleksandraboblak.github.io/tactile-sudoku-simulator/tactile_sudoku_simulator.html"
-                            class="link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >Open the simulator →</a>
-                        </p>
-                      </div>
-                      <div class="tactile-sudoku-process-sub__figure">
-                        <img
-                          class="tactile-sudoku-process-sub__img"
-                          src="assets/simulator.png"
-                          alt="Online Sudoku simulation used to validate rules and feedback before and alongside hardware builds"
-                          width="1162"
-                          height="1358"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
+                    <figure class="case-study-editorial__figure">
+                      <img
+                        class="case-study-editorial__img"
+                        src="assets/simulator.png"
+                        alt="Online Sudoku simulation used to validate rules and feedback before and alongside hardware builds"
+                        width="1162"
+                        height="1358"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                    <div class="case-study-editorial__text">
+                      <span class="case-study-editorial__num" aria-hidden="true">02</span>
+                      <h3 class="case-study-editorial__title" id="tactile-process-simulator-title">
+                        Online simulation
+                      </h3>
+                      <p class="case-study-editorial__body">
+                        A lightweight online simulation helped check rules and feedback logic away
+                        from the hardware while the physical prototype evolved.
+                      </p>
+                      <p class="case-study-editorial__link">
+                        <a
+                          href="https://aleksandraboblak.github.io/tactile-sudoku-simulator/tactile_sudoku_simulator.html"
+                          class="link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >Open the simulator →</a>
+                      </p>
                     </div>
-                  </section>
+                  </article>
 
-                  <section
-                    class="case-study-process-block tactile-sudoku-process-sub"
+                  <article
+                    class="case-study-editorial__entry case-study-editorial__entry--c"
                     aria-labelledby="tactile-process-fabrication-title"
                   >
-                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-fabrication-title">
-                      FABRICATION
-                    </h3>
-                    <div
-                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-left"
-                    >
-                      <div class="tactile-sudoku-process-sub__figure">
-                        <img
-                          class="tactile-sudoku-process-sub__img"
-                          src="assets/meSoldering.jpg"
-                          alt="Soldering the copper-coated fibreglass board that will be the main Sudoku playing field"
-                          width="960"
-                          height="1280"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                      <div class="tactile-sudoku-process-sub__copy">
-                        <p class="tactile-sudoku-process-sub__lede">
-                          Copper-clad fibreglass field — traces, contacts, and magnets in mind.
-                        </p>
-                        <p class="section__body-copy">
-                          The playing surface is a soldered copper board: conductive paths and
-                          contacts where pawns meet the grid. Magnets in the pieces pair with
-                          embedded hardware so pieces seat firmly and stay easy to explore by hand.
-                        </p>
-                        <p class="section__body-copy">
-                          Bench work — prep, soldering, sanding — closed the gap between layout drawings
-                          and what the sensing layer actually needed.
-                        </p>
-                      </div>
+                    <div class="case-study-editorial__text">
+                      <span class="case-study-editorial__num" aria-hidden="true">03</span>
+                      <h3 class="case-study-editorial__title" id="tactile-process-fabrication-title">
+                        Fabrication
+                      </h3>
+                      <p class="case-study-editorial__body">
+                        Copper-clad fibreglass field — traces, contacts, and magnets in mind.
+                      </p>
+                      <p class="case-study-editorial__body">
+                        The playing surface is a soldered copper board: conductive paths and
+                        contacts where pawns meet the grid. Magnets in the pieces pair with
+                        embedded hardware so pieces seat firmly and stay easy to explore by hand.
+                      </p>
+                      <p class="case-study-editorial__body">
+                        Bench work — prep, soldering, sanding — closed the gap between layout drawings
+                        and what the sensing layer actually needed.
+                      </p>
                     </div>
-                  </section>
+                    <figure class="case-study-editorial__figure">
+                      <img
+                        class="case-study-editorial__img"
+                        src="assets/meSoldering.jpg"
+                        alt="Soldering the copper-coated fibreglass board that will be the main Sudoku playing field"
+                        width="960"
+                        height="1280"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  </article>
 
-                  <section
-                    class="case-study-process-block tactile-sudoku-process-sub"
+                  <article
+                    class="case-study-editorial__entry case-study-editorial__entry--d"
                     aria-labelledby="tactile-process-electronics-title"
                   >
-                    <h3 class="section__eyebrow tactile-sudoku-process-sub__title" id="tactile-process-electronics-title">
-                      ELECTRONICS
-                    </h3>
-                    <div
-                      class="tactile-sudoku-process-sub__row tactile-sudoku-process-sub__row--image-right"
-                    >
-                      <div class="tactile-sudoku-process-sub__copy">
-                        <p class="tactile-sudoku-process-sub__lede">
-                          Resistor in each pawn → firmware maps reads to six “digits.”
-                        </p>
-                        <p class="section__body-copy">
-                          Each pawn carries a resistor with a unique value; contact with the copper
-                          field lets the firmware tell which shape sits in a cell — no camera, no
-                          RFID — so the board can track the puzzle state for checks and feedback.
-                        </p>
-                        <ul class="about-list">
-                          <li>
-                            Calibrate ranges so adjacent values don’t bleed together at the edge of
-                            tolerance.
-                          </li>
-                          <li>
-                            Tame electrical bleed between rows and columns — signal isolation is the
-                            main hardware fight on a dense grid.
-                          </li>
-                          <li>
-                            Stress-test placement, lift, and re-seat so reads stay trustworthy in
-                            real play.
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="tactile-sudoku-process-sub__figure">
-                        <img
-                          class="tactile-sudoku-process-sub__img"
-                          src="assets/arduinoTest.jpg"
-                          alt="Testing recognition of pawn resistors on the board and mapping them to numbers 1 through 6"
-                          width="960"
-                          height="1280"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
+                    <figure class="case-study-editorial__figure">
+                      <img
+                        class="case-study-editorial__img"
+                        src="assets/arduinoTest.jpg"
+                        alt="Testing recognition of pawn resistors on the board and mapping them to numbers 1 through 6"
+                        width="960"
+                        height="1280"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                    <div class="case-study-editorial__text">
+                      <span class="case-study-editorial__num" aria-hidden="true">04</span>
+                      <h3 class="case-study-editorial__title" id="tactile-process-electronics-title">
+                        Electronics
+                      </h3>
+                      <p class="case-study-editorial__body">
+                        Resistor in each pawn → firmware maps reads to six “digits.”
+                      </p>
+                      <p class="case-study-editorial__body">
+                        Each pawn carries a resistor with a unique value; contact with the copper
+                        field lets the firmware tell which shape sits in a cell — no camera, no
+                        RFID — so the board can track the puzzle state for checks and feedback.
+                      </p>
+                      <ul class="about-list">
+                        <li>
+                          Calibrate ranges so adjacent values don’t bleed together at the edge of
+                          tolerance.
+                        </li>
+                        <li>
+                          Tame electrical bleed between rows and columns — signal isolation is the
+                          main hardware fight on a dense grid.
+                        </li>
+                        <li>
+                          Stress-test placement, lift, and re-seat so reads stay trustworthy in
+                          real play.
+                        </li>
+                      </ul>
                     </div>
-                  </section>
+                  </article>
                 </div>
                 <p class="case-study-more__back">
                   <a
