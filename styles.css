@@ -2893,6 +2893,19 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
   color: var(--editorial-accent);
 }
 
+/* Highlighted aside — calls out a notable contribution within an editorial entry */
+.case-study-editorial__highlight {
+  margin: 1.15rem 0 0;
+  padding: 0.85rem 1.1rem;
+  border-left: 3px solid var(--editorial-accent);
+  border-radius: 0 4px 4px 0;
+  background: rgba(143, 122, 94, 0.09);
+  color: rgba(0, 0, 0, 0.82);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
 @media (max-width: 900px) {
   .case-study-editorial {
     gap: clamp(2.5rem, 6vw, 4rem);

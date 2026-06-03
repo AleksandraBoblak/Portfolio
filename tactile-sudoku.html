@@ -53,15 +53,17 @@
                 <p class="case-study-project-index" aria-label="Experiment 3 of 3">03</p>
                 <p class="case-study-lede editorial-dropcap">
                   A physical 6×6 Sudoku — shaped, textured pieces and a copper sensing
-                  board I’m building by hand — so the game works when vision isn’t the
-                  primary sense.
+                  board built from scratch with my team — so the game works when vision
+                  isn’t the primary sense.
                 </p>
                 <div class="case-study-hero-meta">
-                  <p class="case-study-meta">6 weeks (Mar – Apr 2026) · In progress</p>
+                  <p class="case-study-meta">6 weeks (Mar – May 2026)</p>
                   <p class="case-study-tools">
-                    Tools: Arduino, Autodesk Fusion, soldering, materials
+                    Tools: Arduino, Cursor Agent, soldering, clay modeling
                   </p>
-                  <p class="case-study-meta">Team project</p>
+                  <p class="case-study-meta">
+                    Team of 4 · My role: project lead — wiring &amp; soldering, firmware
+                  </p>
                 </div>
               </div>
             </header>
@@ -107,12 +109,14 @@
                   A physical 6×6 board players with low vision can enjoy on their own.
                 </p>
                 <p class="section__body-copy">
-                  Six shapes, each with its own texture, replace numbers. Textured
+                  Six shapes replace numbers, each with its own surface so it reads by
+                  touch alone: a pointed star, a flat square, a heart with three raised
+                  dots, a concave bowl, a smooth sphere, and a ridged triangle. Textured
                   navigation buttons help track position on the grid. Vibration confirms
                   placements and flags issues; optional sound gives an extra solving clue.
                 </p>
                 <p class="section__body-copy">
-                  The build is the project: sculpted pawns, a copper-clad playing field,
+                  The build is the project: 3D-printed pawns, a copper-clad playing field,
                   soldered traces, and firmware that has to read reliably in the real
                   room — not only on screen.
                 </p>
@@ -162,6 +166,10 @@
                         <li>texture mattered as much as shape</li>
                         <li>size affected how quickly pieces could be recognized</li>
                       </ul>
+                      <p class="case-study-editorial__body">
+                        Once the set worked by touch, the final pieces moved to 3D print
+                        for crisp, repeatable shapes.
+                      </p>
                     </div>
                     <figure class="case-study-editorial__figure">
                       <img
@@ -227,24 +235,28 @@
                         </h3>
                       </header>
                       <p class="case-study-editorial__lede">
-                        From sketch to copper-clad board — traces, contacts, and magnets at the bench.
+                        A laser-cut box with a 3D-printed top plate for clean cell spacing
+                        and a copper-clad field at the surface.
                       </p>
                       <p class="case-study-editorial__body">
-                        Soldered paths meet the pawns at each cell; magnets seat pieces firmly so
-                        reads stay consistent when pieces lift and return.
+                        Soldered paths meet each pawn at its cell, and magnets seat the pieces
+                        so reads stay consistent as they lift and return. It was my first time
+                        soldering — and my first physical gadget — so the bench was also where
+                        I learned the craft.
                       </p>
                       <p class="case-study-editorial__body">
-                        Prep, soldering, and sanding closed the gap between a layout on screen
-                        and a field I could actually build and test.
+                        When some pawns weren’t quite touching the board, the nail contacts were
+                        sitting too tall; I filed down the seam behind each nail head until every
+                        piece made solid contact.
                       </p>
                     </div>
                     <figure class="case-study-editorial__figure">
                       <img
                         class="case-study-editorial__img"
-                        src="assets/me_soldering.jpg"
-                        alt="Soldering the copper-clad fibreglass playing field at a workbench"
-                        width="3024"
-                        height="4032"
+                        src="assets/pawns_closeup.jpg"
+                        alt="Close-up of the tactile Sudoku pawns and their textured surfaces"
+                        width="4000"
+                        height="3000"
                         loading="lazy"
                         decoding="async"
                       />
@@ -258,8 +270,8 @@
                     <figure class="case-study-editorial__figure">
                       <img
                         class="case-study-editorial__img"
-                        src="assets/board_with_wires_sideview.jpg"
-                        alt="Side view of the assembled Sudoku board with wiring connected for sensing"
+                        src="assets/me_soldering.jpg"
+                        alt="Soldering the board’s wiring at a workbench"
                         width="3024"
                         height="4032"
                         loading="lazy"
@@ -274,13 +286,24 @@
                         </h3>
                       </header>
                       <p class="case-study-editorial__lede">
-                        A resistor in each pawn; firmware reads them as six distinct “digits.”
+                        Each pawn carries a resistor; the wired board reads them as six
+                        distinct “digits” and knows which cell they sit in.
+                      </p>
+                      <p class="case-study-editorial__body">
+                        Under the surface it’s a dense harness: 36 wires for the cells and six
+                        more for the columns, plus lines for seven latching buttons, a
+                        potentiometer, an on/off toggle, a speaker, and a DFPlayer Mini sound
+                        module — a lot to keep straight for a first electronics build.
                       </p>
                       <ul class="about-list">
-                        <li>Calibrate ranges so adjacent values don’t bleed together.</li>
-                        <li>Tame electrical bleed between rows and columns.</li>
-                        <li>Stress-test placement, lift, and re-seat for trustworthy reads.</li>
+                        <li>Six textured shapes — read by the hand.</li>
+                        <li>Six resistor values — read by the board.</li>
+                        <li>Magnets and a 3D-printed inlay — a secure, satisfying click.</li>
                       </ul>
+                      <p class="case-study-editorial__highlight">
+                        I wrote the requirements doc, then vibe-coded the firmware with Cursor
+                        Agent and tested it end to end — my first serious project built this way.
+                      </p>
                     </div>
                   </article>
 
@@ -296,11 +319,30 @@
                         </h3>
                       </header>
                       <p class="case-study-editorial__lede">
-                        Bringing the board into the room — does touch, feedback, and pace feel right?
+                        Bringing the board into the room changed what we built next.
                       </p>
                       <p class="case-study-editorial__body">
-                        Sessions with teammates and guests surfaced what still reads unclear by
-                        touch alone, and what needs tighter hardware before the build is done.
+                        Playing by touch is genuinely hard. Sighted players lean on vision, and
+                        this board asks for a different skill — most were happy to finish a single
+                        box, and plenty had never played Sudoku at all.
+                      </p>
+                      <p class="case-study-editorial__body">What we learned:</p>
+                      <ul class="about-list">
+                        <li>
+                          Added a sound on placement, so players can learn which shape maps to
+                          which tone.
+                        </li>
+                        <li>
+                          Sighted visitors — kids and adults — were eager to try, often closing
+                          their eyes to take on the challenge.
+                        </li>
+                        <li>
+                          Completing even one box felt like a real win, which reset our sense of pace.
+                        </li>
+                      </ul>
+                      <p class="case-study-editorial__body">
+                        Shown at the expo, the finished board held up to real play — and more
+                        than a few visitors said it could be a real product.
                       </p>
                     </div>
                     <figure class="case-study-editorial__figure">
