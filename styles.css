@@ -2814,6 +2814,17 @@ a.card--link:focus-visible .card__media--cover .card__media-img {
     grid-column: 7 / span 6;
     padding-top: clamp(20px, 3vw, 40px);
   }
+
+  .tactile-sudoku-page .case-study-editorial__entry--e {
+    align-items: start;
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--e > .case-study-editorial__text {
+    grid-column: 1 / span 4;
+    padding-top: clamp(20px, 3vw, 40px);
+  }
+  .tactile-sudoku-page .case-study-editorial__entry--e > .case-study-editorial__figure {
+    grid-column: 6 / span 7;
+  }
 }
 
 .case-study-editorial__num {

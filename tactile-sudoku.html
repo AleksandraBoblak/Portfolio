@@ -52,13 +52,14 @@
                 <h1 class="about-title" id="tactile-sudoku-title">Tactile Sudoku</h1>
                 <p class="case-study-project-index" aria-label="Experiment 3 of 3">03</p>
                 <p class="case-study-lede editorial-dropcap">
-                  Exploring how touch, contrast, and clear structure can make puzzles
-                  easier to navigate — especially when vision isn’t the primary sense.
+                  A physical 6×6 Sudoku — shaped, textured pieces and a copper sensing
+                  board I’m building by hand — so the game works when vision isn’t the
+                  primary sense.
                 </p>
                 <div class="case-study-hero-meta">
                   <p class="case-study-meta">6 weeks (Mar – Apr 2026) · In progress</p>
                   <p class="case-study-tools">
-                    Tools: Claude, Arduino, Autodesk Fusion
+                    Tools: Arduino, Autodesk Fusion, soldering, materials
                   </p>
                   <p class="case-study-meta">Team project</p>
                 </div>
@@ -91,10 +92,10 @@
 
               <figure class="tactile-sudoku-editorial__main-visual">
                 <img
-                  src="assets/sudokuHands.webp"
-                  alt="Hands interacting with a tactile Sudoku board"
-                  width="2048"
-                  height="3641"
+                  src="assets/people_play.jpg"
+                  alt="People gathered around the tactile Sudoku board during a play session"
+                  width="4000"
+                  height="3000"
                   loading="lazy"
                   decoding="async"
                 />
@@ -110,6 +111,11 @@
                   navigation buttons help track position on the grid. Vibration confirms
                   placements and flags issues; optional sound gives an extra solving clue.
                 </p>
+                <p class="section__body-copy">
+                  The build is the project: sculpted pawns, a copper-clad playing field,
+                  soldered traces, and firmware that has to read reliably in the real
+                  room — not only on screen.
+                </p>
               </div>
 
               <div class="tactile-sudoku-editorial__rule tactile-sudoku-editorial__rule--spaced" aria-hidden="true"></div>
@@ -122,7 +128,7 @@
                 </p>
               </div>
 
-              <details class="case-study-more">
+              <details class="case-study-more" open>
                 <summary class="case-study-more__summary">
                   More about the process
                 </summary>
@@ -142,7 +148,8 @@
                         Fast iteration before PCB and sensing.
                       </p>
                       <p class="case-study-editorial__body">
-                        Air-dry clay + a simple grid to test:
+                        Air-dry clay and a simple grid to test whether the idea was
+                        worth building in copper and code:
                       </p>
                       <ul class="about-list">
                         <li>whether six shapes were distinguishable</li>
@@ -159,10 +166,10 @@
                     <figure class="case-study-editorial__figure">
                       <img
                         class="case-study-editorial__img"
-                        src="assets/sudokuProto.jpg"
-                        alt="Physical Sudoku prototype with tactile pieces on a gridded board"
-                        width="1107"
-                        height="1280"
+                        src="assets/pawns_separate.jpg"
+                        alt="Six tactile Sudoku pawns with distinct shapes and textures laid out on a work surface"
+                        width="4000"
+                        height="3000"
                         loading="lazy"
                         decoding="async"
                       />
@@ -220,22 +227,24 @@
                         </h3>
                       </header>
                       <p class="case-study-editorial__lede">
-                        A copper-clad fibreglass field — traces, contacts, and magnets in mind.
+                        From sketch to copper-clad board — traces, contacts, and magnets at the bench.
                       </p>
                       <p class="case-study-editorial__body">
-                        Soldered copper paths meet the pawns at each cell; magnets seat pieces firmly.
+                        Soldered paths meet the pawns at each cell; magnets seat pieces firmly so
+                        reads stay consistent when pieces lift and return.
                       </p>
                       <p class="case-study-editorial__body">
-                        Bench work — prep, soldering, sanding — closed the gap between layout and sensing.
+                        Prep, soldering, and sanding closed the gap between a layout on screen
+                        and a field I could actually build and test.
                       </p>
                     </div>
                     <figure class="case-study-editorial__figure">
                       <img
                         class="case-study-editorial__img"
-                        src="assets/meSoldering.jpg"
-                        alt="Soldering the copper-coated fibreglass board that will be the main Sudoku playing field"
-                        width="960"
-                        height="1280"
+                        src="assets/me_soldering.jpg"
+                        alt="Soldering the copper-clad fibreglass playing field at a workbench"
+                        width="3024"
+                        height="4032"
                         loading="lazy"
                         decoding="async"
                       />
@@ -249,10 +258,10 @@
                     <figure class="case-study-editorial__figure">
                       <img
                         class="case-study-editorial__img"
-                        src="assets/arduinoTest.jpg"
-                        alt="Testing recognition of pawn resistors on the board and mapping them to numbers 1 through 6"
-                        width="960"
-                        height="1280"
+                        src="assets/board_with_wires_sideview.jpg"
+                        alt="Side view of the assembled Sudoku board with wiring connected for sensing"
+                        width="3024"
+                        height="4032"
                         loading="lazy"
                         decoding="async"
                       />
@@ -273,6 +282,38 @@
                         <li>Stress-test placement, lift, and re-seat for trustworthy reads.</li>
                       </ul>
                     </div>
+                  </article>
+
+                  <article
+                    class="case-study-editorial__entry case-study-editorial__entry--e"
+                    aria-labelledby="tactile-process-playtesting-title"
+                  >
+                    <div class="case-study-editorial__text">
+                      <header class="case-study-editorial__heading">
+                        <span class="case-study-editorial__num" aria-hidden="true">05</span>
+                        <h3 class="case-study-editorial__title" id="tactile-process-playtesting-title">
+                          Playtesting
+                        </h3>
+                      </header>
+                      <p class="case-study-editorial__lede">
+                        Bringing the board into the room — does touch, feedback, and pace feel right?
+                      </p>
+                      <p class="case-study-editorial__body">
+                        Sessions with teammates and guests surfaced what still reads unclear by
+                        touch alone, and what needs tighter hardware before the build is done.
+                      </p>
+                    </div>
+                    <figure class="case-study-editorial__figure">
+                      <img
+                        class="case-study-editorial__img"
+                        src="assets/person_plays.jpg"
+                        alt="A player using the tactile Sudoku board during a playtesting session"
+                        width="2988"
+                        height="1992"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
                   </article>
                 </div>
                 <p class="case-study-more__back">
